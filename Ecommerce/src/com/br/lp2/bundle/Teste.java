@@ -18,5 +18,7 @@ public class Teste {
         ResourceBundle bundle = ResourceBundle.getBundle("com.br.lp2.boundle.resourceboundle");
         System.out.println(bundle.getString("DRIVER"));
         Connection connection = SingletonConnection.getInstance().getConnection();
+        
+        System.out.println("Teste de linhas sobrescritas");
     }
 }

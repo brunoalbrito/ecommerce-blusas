@@ -22,11 +22,16 @@ public class SingletonConnection {
     private static SingletonConnection instance;
 
     public SingletonConnection() {
-        ResourceBundle rb = ResourceBundle.getBundle("br.com.bundlle.fazer");
+        ResourceBundle bundle = ResourceBundle.getBundle("com.br.lp2.bundle.resourcebundle");
         try {
-            Class.forName(rb.getString("driver"));
+            Class.forName(bundle.getString("driver"));
             try {
-                connection = DriverManager.getConnection("url");
+                connection = DriverManager.getConnection(bundle.getString("PROTOCOL")
+                    + "://" + bundle.getString("HOST")
+                    + "/" + bundle.getString("DATABASE")
+                    + ";useUnicode=yes&characterEncoding=UTF-8",
+                    bundle.getString("USERNAME"),
+                    bundle.getString("PASSWORD"));
             } catch (SQLException ex) {
                 Logger.getLogger(SingletonConnection.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -1,0 +1,31 @@
+Fri Oct 21 09:35:38 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+----------------------------------------------------------------
+Fri Oct 21 09:36:09 BRST 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0157-e706-645b-ffffb6e64a6c
+no diretório de banco de dados C:\Temp\ecommerce-blusas\Ecommerce\db\blusas 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_40-b26
+user.dir=C:\Program Files\GlassFish_Server\javadb
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=C:\Temp\ecommerce-blusas\Ecommerce\db
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Fri Oct 21 09:36:25 BRST 2016:
+Encerrando a instância a816c00e-0157-e706-645b-ffffb6e64a6c
+Fri Oct 21 09:36:25 BRST 2016 Thread[DRDAConnThread_2,5,main] (DATABASE = blusas), (DRDAID = {2}), Banco de dados 'blusas' fechado.
+----------------------------------------------------------------
+Fri Oct 21 09:36:46 BRST 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância 560740aa-0157-e706-645b-ffffb6e64a6c
+no diretório de banco de dados C:\Temp\ecommerce-blusas\Ecommerce\db\blusas 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_40-b26
+user.dir=C:\Program Files\GlassFish_Server\javadb
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=C:\Temp\ecommerce-blusas\Ecommerce\db
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''

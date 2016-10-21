@@ -21,11 +21,6 @@ public class SingletonConnection {
     private Connection connection = null;
     private static SingletonConnection instance;
     
-    public static void main(String[] args) {
-        ResourceBundle bundle = ResourceBundle.getBundle("com.br.lp2.bundle.resourcebundle");
-        System.out.println(bundle.getString("DRIVER"));
-    }
-
     public SingletonConnection() {
         ResourceBundle bundle = ResourceBundle.getBundle("com.br.lp2.bundle.resourcebundle");
         try {

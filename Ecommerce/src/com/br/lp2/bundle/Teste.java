@@ -15,10 +15,11 @@ import java.util.ResourceBundle;
  */
 public class Teste {
     public static void main(String[] args) {
-        ResourceBundle bundle = ResourceBundle.getBundle("com.br.lp2.boundle.resourceboundle");
+        ResourceBundle bundle = ResourceBundle.getBundle("com.br.lp2.bundle.resourcebundle");
         System.out.println(bundle.getString("DRIVER"));
         Connection connection = SingletonConnection.getInstance().getConnection();
-        
-        System.out.println("Teste de linhas sobrescritas");
+        if(connection != null){
+            System.out.println("Connectiong it's Working");
+        }
     }
 }

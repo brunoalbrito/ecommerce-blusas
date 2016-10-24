@@ -20,6 +20,7 @@ public class Teste {
         Connection connection = SingletonConnection.getInstance().getConnection();
         if(connection != null){
             System.out.println("Connectiong it's Working");
+            System.out.println("Leonardo change the project");
         }
     }
 }

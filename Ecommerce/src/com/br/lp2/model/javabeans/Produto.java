@@ -22,7 +22,7 @@ public class Produto {
     
     @Override
     public String toString() {
-        return "Produto{" + "id_produto=" + id_produto + ", cor=" + cor + ", tamanho=" + tamanho + ", preco=" + preco + ", descricao=" + descricao + '}';
+        return "Produto{" + "id_produto= " + id_produto + ", cor= " + cor + ", tamanho= " + tamanho + ", preco= " + preco + ", descricao= " + descricao + '}';
     }
 
     public void setId_produto(long id_produto) {
@@ -65,7 +65,7 @@ public class Produto {
     public String getDescricao() {
         return descricao;
     }
-    
+  
     
     
 }

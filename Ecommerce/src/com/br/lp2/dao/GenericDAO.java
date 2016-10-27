@@ -14,11 +14,11 @@ import java.util.List;
  */
 public interface GenericDAO<E> {
 
-    boolean insertt(E e);
+    boolean insert(E e);
 
-    List<E> findAll(E e);
+    List<E> findAll();
 
-    boolean findById(long id);
+    E findById(long id);
 
     boolean modify(E e);
 

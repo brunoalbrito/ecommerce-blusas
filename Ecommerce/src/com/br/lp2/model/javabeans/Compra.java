@@ -5,6 +5,7 @@
  */
 package com.br.lp2.model.javabeans;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 

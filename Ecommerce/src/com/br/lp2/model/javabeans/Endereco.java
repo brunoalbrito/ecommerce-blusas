@@ -5,6 +5,8 @@
  */
 package com.br.lp2.model.javabeans;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Beatriz

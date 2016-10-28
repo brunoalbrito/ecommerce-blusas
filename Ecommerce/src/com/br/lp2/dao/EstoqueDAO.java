@@ -73,7 +73,7 @@ public class EstoqueDAO implements GenericDAO<Estoque> {
 
     @Override
     public Estoque findById(long id) {
-        String sql = "SELECT * FROM estoque INNER JOIN produto WHERE estoque.id_produto = produto.id_estoque AND id_estoque = ?";
+        String sql = "SELECT * FROM estoque INNER JOIN produto ON estoque.id_produto = produto.id_produto AND id_estoque = ?";
         Estoque estoque = new Estoque();
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -102,8 +102,9 @@ public class EstoqueDAO implements GenericDAO<Estoque> {
         String sql = "UPDATE estoque SET id_produto = ?, qtd = ? WHERE id_estoque = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setLong(1, estoque.getId_estoque());
+            ps.setLong(1, estoque.getProduto().getId_produto());
             ps.setInt(2, estoque.getQtd());
+            ps.setLong(3, estoque.getId_estoque());
             int resp = ps.executeUpdate();
             result = (resp != 0);
         } catch (SQLException ex) {

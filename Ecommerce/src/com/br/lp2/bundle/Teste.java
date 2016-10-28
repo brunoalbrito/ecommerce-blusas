@@ -17,15 +17,6 @@ import java.util.List;
 public class Teste {
 
     public static void main(String[] args) {
-//        Estoque estoque = new Estoque();
-//        Produto produto = new Produto();
-//        produto.setId_produto(1);
-//        estoque.setProduto(produto);
-//        estoque.setQtd(10);
-        EstoqueDAO dAO = new EstoqueDAO();
-        List<Estoque> estoques = dAO.findAll();
-        for (Estoque e : estoques) {
-            System.out.println(e);
-        }
+
     }
 }

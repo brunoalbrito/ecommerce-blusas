@@ -55,7 +55,7 @@ public class ProdutoDAO implements GenericDAO<Produto> {
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 Produto produto = new Produto();
                 produto.setId_produto(rs.getLong("id_produto"));
                 produto.setCor(rs.getString("cor"));
@@ -64,10 +64,12 @@ public class ProdutoDAO implements GenericDAO<Produto> {
                 produto.setDescricao(rs.getString("descricao"));
                 produtos.add(produto);
             }
+            rs.close();
+            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return produtos;
     }
 
@@ -79,17 +81,19 @@ public class ProdutoDAO implements GenericDAO<Produto> {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
                 produto.setId_produto(rs.getLong("id_produto"));
                 produto.setCor(rs.getString("cor"));
                 produto.setPreco(rs.getDouble("preco"));
                 produto.setTamanho(rs.getString("tamanho").charAt(0));
                 produto.setDescricao(rs.getString("descricao"));
             }
+            rs.close();
+            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         return produto;
     }
 
@@ -128,7 +132,7 @@ public class ProdutoDAO implements GenericDAO<Produto> {
 
             int resp = ps.executeUpdate();
             result = (resp != 0);
-            
+
             ps.close();
             connection.close();
 

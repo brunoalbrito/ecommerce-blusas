@@ -5,10 +5,7 @@
  */
 package com.br.lp2.bundle;
 
-import com.br.lp2.dao.EstoqueDAO;
-import com.br.lp2.model.javabeans.Estoque;
-import com.br.lp2.model.javabeans.Produto;
-import java.util.List;
+import com.br.lp2.model.javabeans.Compra;
 
 /**
  *
@@ -17,6 +14,7 @@ import java.util.List;
 public class Teste {
 
     public static void main(String[] args) {
-
+        Compra compra = new Compra();
+        
     }
 }

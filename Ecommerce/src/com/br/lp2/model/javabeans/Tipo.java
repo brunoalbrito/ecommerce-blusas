@@ -5,39 +5,10 @@
  */
 package com.br.lp2.model.javabeans;
 
-import java.io.Serializable;
-
 /**
  *
- * @author Beatriz
+ * @author 41583469
  */
-public class Tipo implements Serializable{
-    private long id_tipo;
-    private String descricao;
-
-    public Tipo() {
-    }
-
-    @Override
-    public String toString() {
-        return "Tipo{" + "id_tipo=" + id_tipo + ", descricao=" + descricao + '}';
-    }
-
-    public long getId_tipo() {
-        return id_tipo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setId_tipo(long id_tipo) {
-        this.id_tipo = id_tipo;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-    
+public enum Tipo {
     
 }

@@ -5,6 +5,7 @@
  */
 package com.br.lp2.dao;
 
+import com.br.lp2.model.javabeans.Estoque;
 import com.br.lp2.model.javabeans.Produto;
 import com.br.lp2.singletonconnection.SingletonConnection;
 import java.sql.Connection;
@@ -18,117 +19,110 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Bruno
+ * @author 41583469
  */
-public class ProdutoDAO implements GenericDAO<Produto> {
+public class EstoqueDAO implements GenericDAO<Estoque> {
 
-    Connection connection = SingletonConnection.getInstance().getConnection();
+    private final static Connection connection = SingletonConnection.getInstance().getConnection();
 
     @Override
-    public boolean insert(Produto produto) {
+    public boolean insert(Estoque estoque) {
         boolean result = false;
 
-        String sql = "INSERT INTO produto(cor,tamanho,preco,descricao)VALUES(?,?,?,?)";
+        String sql = "INSERT INTO estoque(id_produto,qtd)VALUES(?,?) ";
+
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, produto.getCor());
-            ps.setString(2, String.valueOf(produto.getTamanho()));
-            ps.setDouble(3, produto.getPreco());
-            ps.setString(4, produto.getDescricao());
+            ps.setLong(1, estoque.getProduto().getId_produto());
+            ps.setInt(2, estoque.getQtd());
 
             int resp = ps.executeUpdate();
-            if (resp != 0) {
-                result = true;
-            }
-            ps.close();
-            connection.close();
+
+            result = (resp != 0);
         } catch (SQLException ex) {
-            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstoqueDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }
 
     @Override
-    public List<Produto> findAll() {
-        List<Produto> produtos = new ArrayList<>();
-        String sql = "SELECT * FROM produto";
+    public List<Estoque> findAll() {
+        List<Estoque> estoques = new ArrayList<>();
+        String sql = "SELECT * FROM estoque INNER JOIN produto ON estoque.id_produto = produto.id_produto";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
+                Estoque estoque = new Estoque();
+                estoque.setId_estoque(rs.getLong("id_estoque"));
                 Produto produto = new Produto();
                 produto.setId_produto(rs.getLong("id_produto"));
                 produto.setCor(rs.getString("cor"));
                 produto.setPreco(rs.getDouble("preco"));
                 produto.setTamanho(rs.getString("tamanho").charAt(0));
                 produto.setDescricao(rs.getString("descricao"));
-                produtos.add(produto);
+                estoque.setProduto(produto);
+                estoque.setQtd(rs.getInt("qtd"));
+                estoques.add(estoque);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstoqueDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        return produtos;
+        return estoques;
     }
 
     @Override
-    public Produto findById(long id) {
-        String sql = "SELECT * FROM produto WHERE id_produto = ?";
-        Produto produto = new Produto();
+    public Estoque findById(long id) {
+        String sql = "SELECT * FROM estoque INNER JOIN produto WHERE estoque.id_produto = produto.id_estoque AND id_estoque = ?";
+        Estoque estoque = new Estoque();
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {                
+            while (rs.next()) {
+                estoque.setId_estoque(rs.getLong("id_estoque"));
+                Produto produto = new Produto();
                 produto.setId_produto(rs.getLong("id_produto"));
                 produto.setCor(rs.getString("cor"));
                 produto.setPreco(rs.getDouble("preco"));
                 produto.setTamanho(rs.getString("tamanho").charAt(0));
                 produto.setDescricao(rs.getString("descricao"));
+                estoque.setProduto(produto);
+                estoque.setQtd(rs.getInt("qtd"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstoqueDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        return produto;
+        return estoque;
     }
 
     @Override
-    public boolean modify(Produto produto) {
+    public boolean modify(Estoque estoque) {
         boolean result = false;
-
-        String sql = "UPDATE produto SET cor = ?, tamanho = ?, preco = ?, descricao = ? WHERE id_produto = ?";
+        String sql = "UPDATE estoque SET id_produto = ?, qtd = ? WHERE id_estoque = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setString(1, produto.getCor());
-            ps.setString(2, String.valueOf(produto.getTamanho()));
-            ps.setDouble(3, produto.getPreco());
-            ps.setString(4, produto.getDescricao());
-            ps.setLong(5, produto.getId_produto());
-
+            ps.setLong(1, estoque.getId_estoque());
+            ps.setInt(2, estoque.getQtd());
             int resp = ps.executeUpdate();
-            if (resp != 0) {
-                result = true;
-            }
-            ps.close();
-            connection.close();
+            result = (resp != 0);
         } catch (SQLException ex) {
-            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EstoqueDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
     }
 
     @Override
-    public boolean remove(Produto produto) {
+    public boolean remove(Estoque estoque) {
         boolean result = false;
-        String sql = "DELETE FROM produto WHERE id_produto = ?";
+        String sql = "DELETE FROM estoque WHERE id_estoque = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setLong(1, produto.getId_produto());
+            ps.setLong(1, estoque.getId_estoque());
 
             int resp = ps.executeUpdate();
             result = (resp != 0);
-            
+
             ps.close();
             connection.close();
 
@@ -137,5 +131,4 @@ public class ProdutoDAO implements GenericDAO<Produto> {
         }
         return result;
     }
-
 }

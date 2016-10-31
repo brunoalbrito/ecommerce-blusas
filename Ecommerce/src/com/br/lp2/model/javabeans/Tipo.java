@@ -10,5 +10,15 @@ package com.br.lp2.model.javabeans;
  * @author 41583469
  */
 public enum Tipo {
+    ADM("Administrador"), USER("Usuário");
+    private String descricao;
+    Tipo(String descricao){
+        this.descricao = descricao;
+    }
+
+    @Override
+    public String toString() {
+        return "Tipo{" + "descricao=" + descricao + '}';
+    }
     
 }

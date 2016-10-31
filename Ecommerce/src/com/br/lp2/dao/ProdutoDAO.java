@@ -66,6 +66,7 @@ public class ProdutoDAO implements GenericDAO<Produto> {
             }
             rs.close();
             ps.close();
+            connection.close();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -90,6 +91,7 @@ public class ProdutoDAO implements GenericDAO<Produto> {
             }
             rs.close();
             ps.close();
+            connection.close();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

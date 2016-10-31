@@ -39,6 +39,8 @@ public class EstoqueDAO implements GenericDAO<Estoque> {
             int resp = ps.executeUpdate();
 
             result = (resp != 0);
+            ps.close();
+            connection.close();
         } catch (SQLException ex) {
             Logger.getLogger(EstoqueDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -65,6 +67,8 @@ public class EstoqueDAO implements GenericDAO<Estoque> {
                 estoque.setQtd(rs.getInt("qtd"));
                 estoques.add(estoque);
             }
+            ps.close();
+            connection.close();
         } catch (SQLException ex) {
             Logger.getLogger(EstoqueDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -90,6 +94,8 @@ public class EstoqueDAO implements GenericDAO<Estoque> {
                 estoque.setProduto(produto);
                 estoque.setQtd(rs.getInt("qtd"));
             }
+            ps.close();
+            connection.close();
         } catch (SQLException ex) {
             Logger.getLogger(EstoqueDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -107,6 +113,8 @@ public class EstoqueDAO implements GenericDAO<Estoque> {
             ps.setLong(3, estoque.getId_estoque());
             int resp = ps.executeUpdate();
             result = (resp != 0);
+            ps.close();
+            connection.close();
         } catch (SQLException ex) {
             Logger.getLogger(EstoqueDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

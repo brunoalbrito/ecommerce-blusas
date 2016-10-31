@@ -122,8 +122,24 @@ public class EnderecoDAO implements GenericDAO<Endereco> {
     }
 
     @Override
-    public boolean remove(Endereco e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean remove(Endereco endereco) {
+        boolean result=false;
+        String sql = "DELETE FROM endereco WHERE id_endereco=?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setLong(1,endereco.getId_endereco());
+            
+            int resp = ps.executeUpdate();
+            result = (resp!=0);
+            
+            ps.close();
+            connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        return result;
     }
 
 }

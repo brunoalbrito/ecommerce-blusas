@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -41,6 +42,27 @@ public class EnderecoDAO implements GenericDAO<Endereco> {
             }
             ps.close();
             connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return result;
+    }
+
+    public int insertWithPKReturn(Endereco endereco) {
+        int result = 0;
+        String sql = "INSERT INTO endereco (rua,cidade,bairro,estado,cep)VALUES(?,?,?,?,?)";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1, endereco.getRua());
+            ps.setString(2, endereco.getCidade());
+            ps.setString(3, endereco.getBairro());
+            ps.setString(4, endereco.getEstado());
+            ps.setString(5, endereco.getCep());
+            ps.execute();
+            ResultSet rs = ps.getGeneratedKeys();
+            rs.next();
+            result = rs.getInt(1);
+            ps.close();
         } catch (SQLException ex) {
             Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -101,7 +123,7 @@ public class EnderecoDAO implements GenericDAO<Endereco> {
 
     @Override
     public boolean modify(Endereco endereco) {
-         boolean result = false;
+        boolean result = false;
         String sql = "UPDATE endereco SET rua = ?, cidade =?, bairro=?, estado=?, cep=? WHERE id_endereco = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
@@ -123,22 +145,21 @@ public class EnderecoDAO implements GenericDAO<Endereco> {
 
     @Override
     public boolean remove(Endereco endereco) {
-        boolean result=false;
+        boolean result = false;
         String sql = "DELETE FROM endereco WHERE id_endereco=?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setLong(1,endereco.getId_endereco());
-            
+            ps.setLong(1, endereco.getId_endereco());
+
             int resp = ps.executeUpdate();
-            result = (resp!=0);
-            
+            result = (resp != 0);
+
             ps.close();
             connection.close();
         } catch (SQLException ex) {
             Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         return result;
     }
 

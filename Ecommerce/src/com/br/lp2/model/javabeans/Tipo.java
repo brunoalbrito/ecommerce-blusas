@@ -21,4 +21,8 @@ public enum Tipo {
         return "Tipo{" + "descricao=" + descricao + '}';
     }
     
+    public int getIntTipo(){
+        return this == ADM?0:1;
+    }
+    
 }

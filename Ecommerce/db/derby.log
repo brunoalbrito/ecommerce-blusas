@@ -1,18 +1,18 @@
-Fri Oct 28 13:07:42 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+Mon Oct 31 13:28:59 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
 ----------------------------------------------------------------
-Fri Oct 28 13:07:47 BRST 2016:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0158-0bd5-0fc8-ffffb6e64a6c
+Mon Oct 31 13:29:04 BRST 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0158-1b5b-a11a-ffffb6e64a6c
 no diretório de banco de dados C:\Temp\ecommerce-blusas\Ecommerce\db\blusas 
 
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_40-b26
-user.dir=C:\Temp\glassfish-4.1\glassfish4\javadb
+user.dir=C:\Program Files\GlassFish_Server\javadb
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1
 derby.system.home=C:\Temp\ecommerce-blusas\Ecommerce\db
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''
-Fri Oct 28 13:07:48 BRST 2016 Thread[DRDAConnThread_2,5,main] (XID = 582), (SESSIONID = 0), (DATABASE = blusas), (DRDAID = {1}), Cleanup action starting
+Mon Oct 31 13:29:06 BRST 2016 Thread[DRDAConnThread_2,5,main] (XID = 582), (SESSIONID = 0), (DATABASE = blusas), (DRDAID = {1}), Cleanup action starting
 java.sql.SQLNonTransientConnectionException: Ocorreu uma falha de autenticação da conexão.  Motivo: Autenticação inválida..
 	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
 	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source)
@@ -62,4 +62,4 @@ java.sql.SQLException: Ocorreu uma falha de autenticação da conexão.  Motivo: Au
 	at org.apache.derby.impl.drda.DRDAConnThread.run(Unknown Source)
 ============= end nested exception, level (1) ===========
 Cleanup action completed
-Fri Oct 28 13:07:48 BRST 2016 Thread[DRDAConnThread_2,5,main] (DATABASE = blusas), (DRDAID = {1}), Ocorreu uma falha de autenticação da conexão.  Motivo: Autenticação inválida..
+Mon Oct 31 13:29:06 BRST 2016 Thread[DRDAConnThread_2,5,main] (DATABASE = blusas), (DRDAID = {1}), Ocorreu uma falha de autenticação da conexão.  Motivo: Autenticação inválida..

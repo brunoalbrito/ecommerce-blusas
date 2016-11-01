@@ -33,7 +33,7 @@ public class CompraDAO implements GenericDAO<Compra> {
     @Override
     public boolean insert(Compra compra) {
         boolean result = false;
-        String sql = "INSERT INTO compra(id_usuario,entrege,total,data,pagamento)VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO compra(id_usuario,entrege,total,data_compra,pagamento)VALUES(?,?,?,?,?)";
         PreparedStatement ps;
         try {
             ps = connection.prepareStatement(sql);
@@ -75,6 +75,7 @@ public class CompraDAO implements GenericDAO<Compra> {
     @Override
     public boolean modify(Compra compra) {
         boolean result = false;
+        String sql = "UPDATE compra set ";
         return result;
     }
 

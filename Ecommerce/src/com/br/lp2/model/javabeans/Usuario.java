@@ -19,11 +19,11 @@ public class Usuario implements Serializable {
     private String nome;
     private Date dt_nascimento;
     private String sobrenome;
-    private int cpf;
+    private String cpf;
     private Endereco endereco;
     private String usuario;
     private String senha;
-    private int tipo;
+    private Tipo tipo;
     private List<Compra> compras;
 
     public Usuario() {
@@ -58,10 +58,6 @@ public class Usuario implements Serializable {
         return sobrenome;
     }
 
-    public int getCpf() {
-        return cpf;
-    }
-
     public Endereco getEndereco() {
         return endereco;
     }
@@ -80,10 +76,6 @@ public class Usuario implements Serializable {
 
     public void setSobrenome(String sobrenome) {
         this.sobrenome = sobrenome;
-    }
-
-    public void setCpf(int cpf) {
-        this.cpf = cpf;
     }
 
     public void setEndereco(Endereco endereco) {
@@ -106,12 +98,22 @@ public class Usuario implements Serializable {
         this.senha = senha;
     }
 
-    public int getTipo() {
+    public Tipo getTipo() {
         return tipo;
     }
 
-    public void setTipo(int tipo) {
+    public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+    
+    
 
 }

@@ -46,3 +46,37 @@ os.arch=amd64
 os.version=6.1
 derby.system.home=C:\Temp\Teste\ecommerce-blusas\Ecommerce\db
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Nov 01 17:01:53 BRST 2016:
+Encerrando a instância 13a100c9-0158-2127-db89-ffffb33e2883
+Tue Nov 01 17:01:53 BRST 2016 Thread[DRDAConnThread_4,5,main] (DATABASE = ecommerce_blusas), (DRDAID = {7}), Banco de dados 'ecommerce_blusas' fechado.
+----------------------------------------------------------------
+Tue Nov 01 17:02:05 BRST 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância 8dcb83cd-0158-2127-db89-ffffb33e2883
+no diretório de banco de dados C:\Temp\Teste\ecommerce-blusas\Ecommerce\db\ecommerce_blusas 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_40-b26
+user.dir=C:\Temp\glassfish-4.1\glassfish4\javadb
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=C:\Temp\Teste\ecommerce-blusas\Ecommerce\db
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Nov 01 17:02:25 BRST 2016:
+Encerrando a instância 8dcb83cd-0158-2127-db89-ffffb33e2883
+Tue Nov 01 17:02:25 BRST 2016 Thread[DRDAConnThread_4,5,main] (DATABASE = ecommerce_blusas), (DRDAID = {9}), Banco de dados 'ecommerce_blusas' fechado.
+----------------------------------------------------------------
+Tue Nov 01 17:02:29 BRST 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância 6dd50469-0158-2127-db89-ffffb33e2883
+no diretório de banco de dados C:\Temp\Teste\ecommerce-blusas\Ecommerce\db\ecommerce_blusas 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_40-b26
+user.dir=C:\Temp\glassfish-4.1\glassfish4\javadb
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=C:\Temp\Teste\ecommerce-blusas\Ecommerce\db
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''

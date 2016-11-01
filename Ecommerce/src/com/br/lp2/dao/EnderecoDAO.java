@@ -114,7 +114,7 @@ public class EnderecoDAO implements GenericDAO<Endereco> {
                 endereco.setBairro(rs.getString("bairro"));
             }
             ps.close();
-            connection.close();
+//            connection.close();
         } catch (SQLException ex) {
             Logger.getLogger(EnderecoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }

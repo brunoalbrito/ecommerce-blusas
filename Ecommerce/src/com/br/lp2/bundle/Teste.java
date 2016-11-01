@@ -6,6 +6,8 @@
 package com.br.lp2.bundle;
 
 import com.br.lp2.model.javabeans.Compra;
+import com.br.lp2.singletonconnection.SingletonConnection;
+import java.sql.Connection;
 
 /**
  *
@@ -14,7 +16,7 @@ import com.br.lp2.model.javabeans.Compra;
 public class Teste {
 
     public static void main(String[] args) {
-        Compra compra = new Compra();
-        
+        Connection connection = SingletonConnection.getInstance().getConnection();
+
     }
 }

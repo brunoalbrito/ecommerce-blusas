@@ -7,7 +7,6 @@ package com.br.lp2.dao;
 
 import com.br.lp2.model.javabeans.Imagem;
 import com.br.lp2.singletonconnection.SingletonConnection;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;

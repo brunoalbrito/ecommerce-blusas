@@ -13,7 +13,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -93,5 +97,18 @@ public class CompraDAO implements GenericDAO<Compra> {
         }
         return result;
     }
-
+    public static void main(String[] args) {
+        
+        Usuario u = new Usuario();
+        u.setId_usuario(1);
+        
+        Compra compra = new Compra();
+        compra.setUsuario(u);
+        compra.setDt_pedido(LocalDateTime.now());
+        compra.setEntregue(true);
+        compra.setPagamento(true);
+        CompraDAO dAO = new CompraDAO();
+        dAO.insert(compra);
+        
+    }
 }

@@ -17,7 +17,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import static java.util.Collections.list;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -85,7 +84,7 @@ public class ImagemDAO implements GenericDAO<Imagem> {
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 imagem.setId_imagem(rs.getLong("id_imagem"));
-                Blob blob = rs.getBlob("CONTEUDO");
+                Blob blob = rs.getBlob("conteudo");
                 imagem.setConteudo(blob.getBytes(1, (int) blob.length()));
                 blob.free();
                 imagem.setId_produto(rs.getLong("id_produto"));

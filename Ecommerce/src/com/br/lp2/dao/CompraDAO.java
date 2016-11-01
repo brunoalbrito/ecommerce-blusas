@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,11 +14,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -64,6 +62,12 @@ public class CompraDAO implements GenericDAO<Compra> {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
+            while (rs.next()) {                
+                Usuario usuario = new Usuario();
+                usuario.setId_usuario(rs.getLong("id_usurio"));
+                usuario.setNome(rs.getString("nome"));
+                
+            }
             /*Terminar*/
         } catch (SQLException ex) {
             Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -75,7 +79,20 @@ public class CompraDAO implements GenericDAO<Compra> {
     @Override
     public boolean modify(Compra compra) {
         boolean result = false;
-        String sql = "UPDATE compra set ";
+        String sql = "UPDATE compra set entrege = ?, total = ?,data_compra = ?, pagamento = ? WHERE id_compra  = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setBoolean(1, compra.getEntrege());
+            ps.setDouble(2, compra.getTotal());
+            ps.setTimestamp(3, Timestamp.valueOf(compra.getDt_pedido()));
+            ps.setBoolean(4, compra.getPagamento());
+            ps.setLong(5, compra.getId_compra());
+
+            int resp = ps.executeUpdate();
+            result = (resp != 0);
+        } catch (SQLException ex) {
+            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return result;
     }
 
@@ -98,11 +115,12 @@ public class CompraDAO implements GenericDAO<Compra> {
         }
         return result;
     }
+
     public static void main(String[] args) {
-        
+
         Usuario u = new Usuario();
         u.setId_usuario(1);
-        
+
         Compra compra = new Compra();
         compra.setUsuario(u);
         compra.setDt_pedido(LocalDateTime.now());
@@ -110,6 +128,6 @@ public class CompraDAO implements GenericDAO<Compra> {
         compra.setPagamento(true);
         CompraDAO dAO = new CompraDAO();
         dAO.insert(compra);
-        
+
     }
 }

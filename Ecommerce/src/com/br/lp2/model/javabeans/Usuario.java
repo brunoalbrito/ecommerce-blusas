@@ -14,13 +14,16 @@ import java.util.List;
  * @author Beatriz
  */
 public class Usuario implements Serializable {
+
     private long id_usuario;
     private String nome;
     private Date dt_nascimento;
     private String sobrenome;
-    private String cpf;
-    private Tipo tipo;
+    private int cpf;
     private Endereco endereco;
+    private String usuario;
+    private String senha;
+    private int tipo;
     private List<Compra> compras;
 
     public Usuario() {
@@ -39,8 +42,6 @@ public class Usuario implements Serializable {
         return compras;
     }
 
-
-
     public long getId_usuario() {
         return id_usuario;
     }
@@ -57,12 +58,8 @@ public class Usuario implements Serializable {
         return sobrenome;
     }
 
-    public String getCpf() {
+    public int getCpf() {
         return cpf;
-    }
-
-    public Tipo getTipo() {
-        return tipo;
     }
 
     public Endereco getEndereco() {
@@ -85,17 +82,36 @@ public class Usuario implements Serializable {
         this.sobrenome = sobrenome;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(int cpf) {
         this.cpf = cpf;
-    }
-
-    public void setTipo(Tipo tipo) {
-        this.tipo = tipo;
     }
 
     public void setEndereco(Endereco endereco) {
         this.endereco = endereco;
     }
-    
-    
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
 }

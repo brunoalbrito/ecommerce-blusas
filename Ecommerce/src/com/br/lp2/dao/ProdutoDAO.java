@@ -103,7 +103,8 @@ public class ProdutoDAO implements GenericDAO<Produto> {
     public boolean modify(Produto produto) {
         boolean result = false;
 
-        String sql = "UPDATE produto SET cor = ?, tamanho = ?, preco = ?, descricao = ? WHERE id_produto = ?";
+        String sql = "UPDATE produto SET cor = ?, tamanho = ?, preco = ?,"
+                + " descricao = ? WHERE id_produto = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, produto.getCor());

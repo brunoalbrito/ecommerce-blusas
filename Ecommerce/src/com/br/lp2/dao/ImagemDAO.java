@@ -7,10 +7,6 @@ package com.br.lp2.dao;
 
 import com.br.lp2.model.javabeans.Imagem;
 import com.br.lp2.singletonconnection.SingletonConnection;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -136,20 +132,5 @@ public class ImagemDAO implements GenericDAO<Imagem> {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
-    }
-
-    public static void main(String[] args) throws IOException {
-
-        File file = new File("teste.png");
-        InputStream is = new FileInputStream(file);
-        byte[] buffer = new byte[is.available()];
-        is.read(buffer);
-        is.close();
-        Imagem imagem = new Imagem();
-        long l = 1;
-        imagem.setId_produto(l);
-        imagem.setConteudo(buffer);
-        ImagemDAO dAO = new ImagemDAO();
-        dAO.insert(imagem);
     }
 }

@@ -1,20 +1,14 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.br.lp2.dao;
 
 import com.br.lp2.model.javabeans.Compra;
-import com.br.lp2.model.javabeans.Usuario;
+import com.br.lp2.model.javabeans.Item;
+import com.br.lp2.model.javabeans.Produto;
 import com.br.lp2.singletonconnection.SingletonConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -51,24 +45,91 @@ public class CompraDAO implements GenericDAO<Compra> {
     @Override
     public List<Compra> findAll() {
         List<Compra> compras = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
+        UsuarioDAO udAO = new UsuarioDAO();
+        String sql = "SELECT * FROM compra";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Compra compra = new Compra();
+                compra.setUsuario(udAO.findById(rs.getLong("id_usuario")));
+                compra.setId_compra(rs.getLong("id_compra"));
+                compra.setEntregue(rs.getBoolean("entrege"));
+                compra.setTotal(rs.getDouble("total"));
+                compra.setDt_pedido(rs.getTimestamp("data_compra").toLocalDateTime());
+                compra.setPagamento(rs.getBoolean("pagamento"));
+                
+                String sql1 = "SELECT item.qtd,produto.id_produto,"
+                        + "produto.cor,produto.tamanho,produto.preco,produto.descricao FROM item "
+                        + "inner join compra ON (item.id_compra = compra.id_compra) "
+                        + "inner join produto ON (produto.id_produto = item.id_produto) AND item.id_compra = ?";
+                PreparedStatement ps1 = connection.prepareStatement(sql1);
+                ps1.setLong(1, compra.getId_compra());
+                ResultSet rs1 = ps1.executeQuery();
+                while (rs1.next()) {
+                    Produto produto = new Produto();
+                    produto.setCor(rs1.getString("cor"));
+                    produto.setDescricao("descricao");
+                    produto.setTamanho(rs.getString("tamanho").charAt(0));
+                    produto.setPreco(rs.getDouble("preco"));
+                    Item item = new Item();
+                    item.setProduto(produto);
+                    item.setQtd(rs.getInt("qtd"));
+                    items.add(item);
+                }
+                compra.setItens(items);
+                compras.add(compra);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         return compras;
     }
 
     @Override
     public Compra findById(long id) {
         Compra compra = new Compra();
-        String sql = "SELECT * FROM compra INNER JOIN pessoa ON compra.id_usuario = usuario.id_usuario WHERE id_compra = ?";
+        List<Item> items = new ArrayList<>();
+        UsuarioDAO udAO = new UsuarioDAO();
+        String sql = "select * from compra WHERE id_compra = ?";
+
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
-            while (rs.next()) {                
-                Usuario usuario = new Usuario();
-                usuario.setId_usuario(rs.getLong("id_usurio"));
-                usuario.setNome(rs.getString("nome"));
+            while (rs.next()) {
+                compra.setUsuario(udAO.findById(rs.getLong(sql)));
+                compra.setId_compra(rs.getLong("id_compra"));
+                compra.setEntregue(rs.getBoolean("entrege"));
+                compra.setTotal(rs.getDouble("total"));
+                compra.setDt_pedido(rs.getTimestamp("data_compra").toLocalDateTime());
+                compra.setPagamento(rs.getBoolean("pagamento"));
                 
+                String sql1 = "select item.qtd,produto.id_produto,"
+                        + "produto.cor,produto.tamanho,produto.preco,produto.descricao from item "
+                        + "inner join compra on (item.id_compra = compra.id_compra) "
+                        + "inner join produto on (produto.id_produto = item.id_produto) and item.id_compra = ?";
+                PreparedStatement ps1 = connection.prepareStatement(sql1);
+                ps1.setLong(1, id);
+                ResultSet rs1 = ps1.executeQuery();
+                while (rs1.next()) {
+                    Produto produto = new Produto();
+                    produto.setCor(rs1.getString("cor"));
+                    produto.setDescricao("descricao");
+                    produto.setTamanho(rs.getString("tamanho").charAt(0));
+                    produto.setPreco(rs.getDouble("preco"));
+                    Item item = new Item();
+                    item.setProduto(produto);
+                    item.setQtd(rs.getInt("qtd"));
+                    items.add(item);
+                }
+                compra.setItens(items);
             }
-            /*Terminar*/
+
         } catch (SQLException ex) {
             Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -114,20 +175,5 @@ public class CompraDAO implements GenericDAO<Compra> {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
-    }
-
-    public static void main(String[] args) {
-
-        Usuario u = new Usuario();
-        u.setId_usuario(1);
-
-        Compra compra = new Compra();
-        compra.setUsuario(u);
-        compra.setDt_pedido(LocalDateTime.now());
-        compra.setEntregue(true);
-        compra.setPagamento(true);
-        CompraDAO dAO = new CompraDAO();
-        dAO.insert(compra);
-
     }
 }

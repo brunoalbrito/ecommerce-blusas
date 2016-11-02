@@ -16,12 +16,12 @@ import java.util.List;
 public class Compra implements Serializable {
 
     private long id_compra;
-    private Usuario usuario;
     private boolean entregue;
     private boolean pagamento;
     private double total;
     private LocalDateTime dt_pedido;
     private List<Item> itens;
+    private Usuario usuario;
 
     public Compra() {
 
@@ -33,14 +33,6 @@ public class Compra implements Serializable {
 
     public void setId_compra(long id_compra) {
         this.id_compra = id_compra;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public boolean getEntrege() {
@@ -82,4 +74,18 @@ public class Compra implements Serializable {
     public void setPagamento(boolean pagamento) {
         this.pagamento = pagamento;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    @Override
+    public String toString() {
+        return "Compra{" + "id_compra=" + id_compra + ", entregue=" + entregue + ", pagamento=" + pagamento + ", total=" + total + ", dt_pedido=" + dt_pedido + ", itens=" + itens + ", usuario=" + usuario + '}';
+    }
+    
 }

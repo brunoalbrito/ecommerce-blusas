@@ -1,7 +1,7 @@
-Wed Nov 02 14:23:17 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+Fri Nov 04 19:23:17 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
 ----------------------------------------------------------------
-Wed Nov 02 14:23:21 BRST 2016:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0158-25da-0fc1-ffffc754b6ec
+Fri Nov 04 19:23:17 BRST 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0158-3139-6e7f-ffffc754b6ec
 no diretório de banco de dados C:\Users\Bruno\Documents\Netbeans\ecommerce-blusas\Ecommerce\db\ecommerce_blusas 
 
 java.vendor=Oracle Corporation

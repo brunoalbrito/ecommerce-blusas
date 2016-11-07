@@ -1,14 +1,48 @@
-Mon Nov 07 14:23:31 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+Mon Nov 07 20:23:13 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
 ----------------------------------------------------------------
-Mon Nov 07 14:23:34 BRST 2016:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0158-3f9a-132b-ffffb6e64a6c
-no diretório de banco de dados C:\Temp\ecommerce-blusas\Ecommerce\db\ecommerce_blusas 
+Mon Nov 07 20:23:14 BRST 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0158-40e3-620e-ffffc754b6ec
+no diretório de banco de dados C:\Users\Bruno\Documents\Netbeans\ecommerce-blusas\Ecommerce\db\ecommerce_blusas 
 
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_40-b26
-user.dir=C:\Temp\glassfish-4.1\glassfish4\javadb
+java.runtime.version=1.8.0_102-b14
+user.dir=C:\Program Files\glassfish-4.1.1\javadb
 os.name=Windows 7
 os.arch=amd64
 os.version=6.1
-derby.system.home=C:\Temp\ecommerce-blusas\Ecommerce\db
+derby.system.home=C:\Users\Bruno\Documents\Netbeans\ecommerce-blusas\Ecommerce\db
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Nov 07 20:39:45 BRST 2016:
+Encerrando a instância a816c00e-0158-40e3-620e-ffffc754b6ec
+Mon Nov 07 20:39:45 BRST 2016 Thread[DRDAConnThread_3,5,main] (DATABASE = ecommerce_blusas), (DRDAID = {3}), Banco de dados 'ecommerce_blusas' fechado.
+----------------------------------------------------------------
+Mon Nov 07 20:40:47 BRST 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância 2faf0139-0158-40e3-620e-ffffc754b6ec
+no diretório de banco de dados C:\Users\Bruno\Documents\Netbeans\ecommerce-blusas\Ecommerce\db\ecommerce_blusas 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_102-b14
+user.dir=C:\Program Files\glassfish-4.1.1\javadb
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=C:\Users\Bruno\Documents\Netbeans\ecommerce-blusas\Ecommerce\db
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Nov 07 20:40:55 BRST 2016:
+Encerrando a instância 2faf0139-0158-40e3-620e-ffffc754b6ec
+Mon Nov 07 20:40:55 BRST 2016 Thread[DRDAConnThread_3,5,main] (DATABASE = ecommerce_blusas), (DRDAID = {5}), Banco de dados 'ecommerce_blusas' fechado.
+----------------------------------------------------------------
+Mon Nov 07 20:40:59 BRST 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância ab2c81d5-0158-40e3-620e-ffffc754b6ec
+no diretório de banco de dados C:\Users\Bruno\Documents\Netbeans\ecommerce-blusas\Ecommerce\db\ecommerce_blusas 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_102-b14
+user.dir=C:\Program Files\glassfish-4.1.1\javadb
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=C:\Users\Bruno\Documents\Netbeans\ecommerce-blusas\Ecommerce\db
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''

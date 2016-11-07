@@ -24,6 +24,6 @@ public class Teste {
         produto.setDescricao("Teste");
         produto.setPreco(100);
         produto.setTamanho('M');
-        new ProdutoDAO().insert(produto);
+//        new ProdutoDAO().insert(produto);
     }
 }

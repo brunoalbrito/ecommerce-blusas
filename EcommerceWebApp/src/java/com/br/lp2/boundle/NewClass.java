@@ -18,7 +18,7 @@ public class NewClass {
     public static void main(String[] args) {
         ResourceBundle rb = ResourceBundle.getBundle("com.br.lp2.boundle.actionConfig");
         try {
-            Class c =  Class.forName(rb.getString("compra"));
+            Class c =  Class.forName(rb.getString("usuario"));
             System.out.println(c.getName());
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(NewClass.class.getName()).log(Level.SEVERE, null, ex);

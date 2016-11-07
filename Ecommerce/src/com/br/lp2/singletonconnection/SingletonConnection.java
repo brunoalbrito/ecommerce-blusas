@@ -16,7 +16,7 @@ public class SingletonConnection {
     private Connection connection = null;
     private static SingletonConnection instance;
     
-    public SingletonConnection() {
+    private SingletonConnection() {
         ResourceBundle bundle = ResourceBundle.getBundle("com.br.lp2.bundle.resourcebundle");
         try {
             Class.forName(bundle.getString("DRIVER"));

@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  * @author Bruno
  */
 public class ProdutoDAO implements GenericDAO<Produto> {
-
+    //RETIRAR ESSA VARIÁVEL, ABRIR E FECHAR CONEXÃO DENTRO DE TODOS OS MÉTODOS
     Connection connection = SingletonConnection.getInstance().getConnection();
 
     @Override
@@ -29,13 +29,15 @@ public class ProdutoDAO implements GenericDAO<Produto> {
         boolean result = false;
 
         String sql = "INSERT INTO produto(cor,tamanho,preco,descricao)VALUES(?,?,?,?)";
+        Connection connection = null;
         try {
+            connection = SingletonConnection.getInstance().getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, produto.getCor());
             ps.setString(2, String.valueOf(produto.getTamanho()));
             ps.setDouble(3, produto.getPreco());
             ps.setString(4, produto.getDescricao());
-
+            System.out.println(produto);
             int resp = ps.executeUpdate();
             if (resp != 0) {
                 result = true;

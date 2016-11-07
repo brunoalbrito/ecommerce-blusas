@@ -20,16 +20,17 @@
         </style>
     </head>
     <body>
-        <form>
+        <form action="${pageContext.request.contextPath}/produto!insert.action" method="GET">
             <p>Cor: </p>
-            <p><input type="text" name="cor" ></p>
+            <p><input type="text" name="cor"></p>
             <p>Tamanho:</p>
             <p><input type="text" name="tamanho"></p>
             <p>Preco: </p>
             <p><input type="text" name="preco"></p>
             <p>Descrição</p>
             <p><input type="text" name="descricao"></p>
-            <input type="button" value="Confirmar">
+            <input type="submit" value="Confirmar">
         </form>
+        <a href="${pageContext.request.contextPath}/cargo!listar.action">cargos</a> |
     </body>
 </html>

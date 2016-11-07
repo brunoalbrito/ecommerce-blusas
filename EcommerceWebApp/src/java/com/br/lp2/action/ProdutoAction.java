@@ -24,10 +24,11 @@ public class ProdutoAction extends ActionSupport {
             produto.setPreco(Double.parseDouble(this.getRequest().getParameter("preco")));
             produto.setTamanho(this.getRequest().getParameter("tamanho").charAt(0));
             new ProdutoDAO().insert(produto);
+            this.getRequest().setAttribute("produto", produto);
         } catch (Exception e) {
             Logger.getLogger(ProdutoAction.class.getName()).log(Level.SEVERE, null, e);
         }
         
-        return "WEB-INF/jsp/cargo/inserido.jsp";
+        return "WEB-INF/jsp/produto/inserido.jsp";
     }
 }

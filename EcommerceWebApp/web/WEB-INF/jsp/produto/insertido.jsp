@@ -4,6 +4,7 @@
     Author     : 41583469
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,5 +14,6 @@
     </head>
     <body>
         <h1>Inserido com sucesso.</h1>
+        ${produto};
     </body>
 </html>

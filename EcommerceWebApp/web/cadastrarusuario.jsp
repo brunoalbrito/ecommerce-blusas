@@ -52,6 +52,7 @@
             <p><input type="text" name="estado"></p>
             <p>CEP: </p>
             <p><input type="text" name="cep"></p>
+            
             <input type="submit" value="Confirmar">
         </form>
         <a href="${pageContext.request.contextPath}/cargo!listar.action">cargos</a> |

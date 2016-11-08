@@ -31,7 +31,7 @@
             <p><textarea name="descricao" rows="10" cols="50" maxlength="800"></textarea> </p>
             <p>Imagem:</p>
             <p><input type="file" name="imagem"></p>
-            <input type="submit" value="Confirmar">
+            <input type="submit" value="Confirmar">            
         </form>
     </body>
 </html>

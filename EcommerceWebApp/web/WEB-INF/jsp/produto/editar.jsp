@@ -22,7 +22,8 @@
     </head>
     <body>
         <h1>Editar Produto</h1>
-        <form>
+        <form method="POST" action="${pageContext.request.contextPath}">
+            <c:out value="${produto}"></c:out>
             <p>Cor: </p>
             <p><input type="text" name="cor" value="${produto.cor}"></p>
             <p>Tamanho:</p>
@@ -31,7 +32,17 @@
             <p><input type="text" name="preco" value="${produto.preco}"></p>
             <p>Descrição</p>
             <p><textarea name="descricao" rows="10" cols="50" maxlength="800">${produto.descricao}</textarea> </p>
-            <input type="submit" value="Alterar">
+            <button type="submit" formaction="${pageContext.request.contextPath}/produto!alterar.action">Alterar</button>&nbsp;
+            <button onclick="confirmar()" formaction="${pageContext.request.contextPath}/produto!remover.action?id_produto=${produto.id_produto}">Excluir Produto</button>
         </form>
+<!--        <script type="text/javascript">
+            function confirmar()
+            {
+                var resp = confirm("Deseja realmente excluir");
+                if(resp){
+                    window.location.
+                }
+            }
+        </script>-->
     </body>
 </html>

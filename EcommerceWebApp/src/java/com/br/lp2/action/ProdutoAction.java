@@ -66,7 +66,7 @@ public class ProdutoAction extends ActionSupport {
             System.out.println(id);
             Produto produto = new ProdutoDAO().findById(id);
             if (produto.getCor() != null) {
-                back = "WEB-INF/jsp/produto/alterar.jsp";
+                back = "WEB-INF/jsp/produto/editar.jsp";
             } else {
                 back = "erro";
             }
@@ -76,4 +76,35 @@ public class ProdutoAction extends ActionSupport {
         }
         return back;
     }
+
+    public String alterar() {
+        String back = "erro";
+        try {
+            Produto produto = new Produto();
+            produto.setId_produto(Long.parseLong(this.getRequest().getParameter("id_produto")));
+            produto.setCor(this.getRequest().getParameter("cor"));
+            produto.setDescricao(this.getRequest().getParameter("descricao"));
+            produto.setPreco(Double.parseDouble(this.getRequest().getParameter("preco")));
+            produto.setTamanho(this.getRequest().getParameter("tamanho").charAt(0));
+            new ProdutoDAO().modify(produto);
+            back = "index.jsp";
+        } catch (Exception e) {
+            Logger.getLogger(ProdutoAction.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return back;
+    }
+    public String remover() {
+        String back = "erro";
+        System.out.println("Passou aqui");
+        try {
+            Produto produto = new Produto();
+            produto.setId_produto(Long.parseLong(this.getRequest().getParameter("id_produto")));
+            new ProdutoDAO().remove(produto);
+            back = "index.jsp";
+        } catch (Exception e) {
+            Logger.getLogger(ProdutoAction.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return back;
+    }
+    
 }

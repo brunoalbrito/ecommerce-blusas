@@ -5,7 +5,6 @@
  */
 package com.br.lp2.frontcontroller;
 
-import static java.io.FileDescriptor.out;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Method;
@@ -20,7 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.br.lp2.action.Action;
 import java.lang.reflect.InvocationTargetException;
-import java.rmi.ServerException;
 
 /**
  *
@@ -51,6 +49,8 @@ public class Controller extends HttpServlet {
         try {
             Class actionClass = Class.forName(rb.getString(getActionName(request)));
             System.out.print("Pacote: " + actionClass.getName());
+            System.out.println(request.getParameter("id_produto"));
+            System.out.println(request.getRequestURI());
             Method actionMethod = getRealMethod(request, actionClass);
             Object actionInstanciada = actionClass.newInstance();
 

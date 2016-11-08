@@ -22,7 +22,7 @@ import java.util.logging.Logger;
  */
 public class ProdutoDAO implements GenericDAO<Produto> {
     //RETIRAR ESSA VARIÁVEL, ABRIR E FECHAR CONEXÃO DENTRO DE TODOS OS MÉTODOS
-    Connection connection = SingletonConnection.getInstance().getConnection();
+    Connection connection = null;
 
     @Override
     public boolean insert(Produto produto) {

@@ -12,12 +12,22 @@ import java.util.logging.Logger;
  * @author Bruno
  */
 public class SingletonConnection {
-
+    private ResourceBundle bundle = null;        
     private Connection connection = null;
     private static SingletonConnection instance;
     
     private SingletonConnection() {
-        ResourceBundle bundle = ResourceBundle.getBundle("com.br.lp2.bundle.resourcebundle");
+        bundle = ResourceBundle.getBundle("com.br.lp2.bundle.resourcebundle");        
+    }
+
+    public static SingletonConnection getInstance() {
+        if (instance == null) {
+            instance = new SingletonConnection();
+        }
+        return instance;
+    }
+
+    public Connection getConnection() {
         try {
             Class.forName(bundle.getString("DRIVER"));
             try {
@@ -33,16 +43,6 @@ public class SingletonConnection {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(SingletonConnection.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    public static SingletonConnection getInstance() {
-        if (instance == null) {
-            instance = new SingletonConnection();
-        }
-        return instance;
-    }
-
-    public Connection getConnection() {
         return connection;
     }
 }

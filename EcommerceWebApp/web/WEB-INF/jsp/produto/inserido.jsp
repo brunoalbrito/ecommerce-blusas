@@ -15,5 +15,7 @@
     <body>
         <h1>Inserido com sucesso.</h1>
         ${produto};       
+        </br>
+        <a href="${pageContext.request.contextPath}/index.jsp">INDEX</a>
     </body>
 </html>

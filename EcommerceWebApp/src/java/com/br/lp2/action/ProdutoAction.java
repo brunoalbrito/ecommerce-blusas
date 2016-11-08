@@ -65,9 +65,9 @@ public class ProdutoAction extends ActionSupport {
             Long id = Long.parseLong(this.getRequest().getParameter("id"));
             System.out.println(id);
             Produto produto = new ProdutoDAO().findById(id);
-            if(produto.getCor() != null){
+            if (produto.getCor() != null) {
                 back = "WEB-INF/jsp/produto/alterar.jsp";
-            }else{
+            } else {
                 back = "erro";
             }
             this.getRequest().setAttribute("produto", produto);

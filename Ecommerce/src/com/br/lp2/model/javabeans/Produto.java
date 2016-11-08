@@ -10,6 +10,8 @@ package com.br.lp2.model.javabeans;
  * @author Beatriz
  */
 public class Produto {
+
+    private Imagem imagem;
     private long id_produto;
     private String cor;
     private char tamanho;
@@ -17,12 +19,6 @@ public class Produto {
     private String descricao;
 
     public Produto() {
-    }
-
-    
-    @Override
-    public String toString() {
-        return "Produto{" + "id_produto= " + id_produto + ", cor= " + cor + ", tamanho= " + tamanho + ", preco= " + preco + ", descricao= " + descricao + '}';
     }
 
     public void setId_produto(long id_produto) {
@@ -44,7 +40,6 @@ public class Produto {
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
-    
 
     public long getId_produto() {
         return id_produto;
@@ -65,7 +60,18 @@ public class Produto {
     public String getDescricao() {
         return descricao;
     }
-  
-    
-    
+
+    public Imagem getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(Imagem imagem) {
+        this.imagem = imagem;
+    }
+
+    @Override
+    public String toString() {
+        return "Produto{" + "imagem=" + imagem + ", id_produto=" + id_produto + ", cor=" + cor + ", tamanho=" + tamanho + ", preco=" + preco + ", descricao=" + descricao + '}';
+    }
+
 }

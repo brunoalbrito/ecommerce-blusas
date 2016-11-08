@@ -55,6 +55,7 @@ public class ProdutoDAO implements GenericDAO<Produto> {
         List<Produto> produtos = new ArrayList<>();
         String sql = "SELECT * FROM produto";
         try {
+            connection = SingletonConnection.getInstance().getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -81,6 +82,7 @@ public class ProdutoDAO implements GenericDAO<Produto> {
         String sql = "SELECT * FROM produto WHERE id_produto = ?";
         Produto produto = new Produto();
         try {
+            connection = SingletonConnection.getInstance().getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
@@ -108,6 +110,7 @@ public class ProdutoDAO implements GenericDAO<Produto> {
         String sql = "UPDATE produto SET cor = ?, tamanho = ?, preco = ?,"
                 + " descricao = ? WHERE id_produto = ?";
         try {
+            connection = SingletonConnection.getInstance().getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setString(1, produto.getCor());
             ps.setString(2, String.valueOf(produto.getTamanho()));
@@ -129,6 +132,7 @@ public class ProdutoDAO implements GenericDAO<Produto> {
 
     @Override
     public boolean remove(Produto produto) {
+        connection = SingletonConnection.getInstance().getConnection();
         boolean result = false;
         String sql = "DELETE FROM produto WHERE id_produto = ?";
         try {

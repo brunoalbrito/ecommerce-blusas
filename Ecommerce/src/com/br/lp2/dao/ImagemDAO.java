@@ -30,11 +30,10 @@ public class ImagemDAO implements GenericDAO<Imagem> {
     public boolean insert(Imagem imagem) {
         boolean result = false;
 
-        String sql = "INSERT INTO imagem (id_produto,conteudo)VALUES(?,?)";
+        String sql = "INSERT INTO imagem (id_produto,conteudo)VALUES((SELECT MAX(LENGTH(id_produto))FROM PRODUTO),?)";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setLong(1, imagem.getId_produto());
-            ps.setBlob(2, new SerialBlob(imagem.getConteudo()));
+            ps.setBlob(1, new SerialBlob(imagem.getConteudo()));
 
             int resp = ps.executeUpdate();
             if (resp != 0) {

@@ -104,6 +104,34 @@ public class UsuarioDAO implements GenericDAO<Usuario> {
         }
         return usuario;
     }
+    
+    public Usuario findByUsername(String username){
+        Usuario usuario = new Usuario();
+        EnderecoDAO daoEndereco = new EnderecoDAO();
+        
+        String sql = "SELECT * FROM usuario WHERE username=?";
+        try{
+        PreparedStatement pst = connection.prepareStatement(sql);
+        pst.setString(1, username);
+        
+        ResultSet rs = pst.executeQuery();
+            while (rs.next()) {
+                usuario.setId_usuario(rs.getLong("id_usuario"));
+                usuario.setNome(rs.getString("nome"));
+                usuario.setCpf(rs.getString("cpf"));
+                usuario.setDt_nascimento(new java.util.Date(rs.getDate("dt_nascimento").getTime()));
+                usuario.setEndereco(daoEndereco.findById(rs.getLong("id_endereco")));
+                usuario.setSenha(rs.getString("senha"));
+                usuario.setSobrenome(rs.getString("sobrenome"));
+                usuario.setTipo(Tipo.values()[rs.getInt("tipo")]);
+                usuario.setUsuario(rs.getString("usuario"));
+                //FALTA SETAR AS COMPRAS DO USUÁRIO (DEPENDE DO COMPRA DAO)
+            }
+        }catch(SQLException ex){
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE,null,ex);
+        }
+        return usuario;
+    }
 
     @Override
     public boolean modify(Usuario e) {

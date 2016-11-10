@@ -11,6 +11,7 @@ import com.br.lp2.model.javabeans.Endereco;
 import com.br.lp2.model.javabeans.Tipo;
 import com.br.lp2.model.javabeans.Usuario;
 import java.text.SimpleDateFormat;
+import javax.servlet.http.Cookie;
 
 /**
  *
@@ -46,6 +47,32 @@ public class UsuarioAction extends ActionSupport {
 
         }
         return back;
+    }
+    
+    public void doLogin(){
+        String username = getRequest().getParameter("username");
+        String password = getRequest().getParameter("password");
+        
+        Usuario usuario = new UsuarioDAO().findByUsername(username);
+        
+        if(usuario==null){
+            getRequest().getSession().setAttribute("error","User not found");
+        }else if(password.equals(usuario.getSenha())){
+            String remember = getRequest().getParameter("remember");
+            Cookie c1 = new Cookie ("username", username);
+            
+            if(remember!=null){
+                c1.setMaxAge(60*60*24*7);
+            }else{
+                c1.setMaxAge(0);
+            }
+            getResponse().addCookie(c1);
+            getRequest().getSession().setAttribute("usuario", usuario);
+            
+        }else{
+           getRequest().getSession().setAttribute("error", "Wrong Password!"); 
+        }
+        
     }
 
 }

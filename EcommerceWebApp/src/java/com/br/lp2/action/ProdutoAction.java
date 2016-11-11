@@ -10,6 +10,7 @@ import com.br.lp2.model.javabeans.Produto;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.servlet.http.Part;
 
 /**
  *
@@ -25,6 +26,8 @@ public class ProdutoAction extends ActionSupport {
             produto.setDescricao(this.getRequest().getParameter("descricao"));
             produto.setPreco(Double.parseDouble(this.getRequest().getParameter("preco")));
             produto.setTamanho(this.getRequest().getParameter("tamanho").charAt(0));
+            Part part = this.getRequest().getPart("imagem");
+            
             try {
                 Boolean resp = new ProdutoDAO().insert(produto);
                 if (resp) {

@@ -20,7 +20,7 @@
         </style>
     </head>
     <body>
-        <form action="${pageContext.request.contextPath}/produto!insert.action" method="GET">
+        <form action="${pageContext.request.contextPath}/produto!insert.action" method="POST" enctype="multipart/form-data">
             <p>Cor: </p>
             <p><input type="text" name="cor"></p>
             <p>Tamanho:</p>
@@ -30,7 +30,7 @@
             <p>Descrição</p>
             <p><textarea name="descricao" rows="10" cols="50" maxlength="800"></textarea> </p>
             <p>Imagem:</p>
-            <p><input type="file" name="imagem"></p>
+            <p><input type="file" name="imagem"/></p>
             <input type="submit" value="Confirmar">            
         </form>
     </body>

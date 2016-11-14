@@ -40,7 +40,7 @@ public class UsuarioTESTE {
         u.setEndereco(e);
         u.setNome("Bruno");
         u.setSobrenome("Albuquerque");
-        u.setTipo(Tipo.USER);
+        u.setTipo(Tipo.ADM);
         u.setUsuario("brunobrito");
         u.setSenha("senha123");
         System.out.println("Tipo de usuario numericamente: " + u.getTipo().getIntTipo());

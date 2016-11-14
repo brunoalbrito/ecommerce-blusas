@@ -5,8 +5,11 @@
  */
 package com.br.lp2.action;
 
+import com.br.lp2.dao.ImagemDAO;
 import com.br.lp2.dao.ProdutoDAO;
+import com.br.lp2.model.javabeans.Imagem;
 import com.br.lp2.model.javabeans.Produto;
+import java.io.InputStream;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,10 +30,18 @@ public class ProdutoAction extends ActionSupport {
             produto.setPreco(Double.parseDouble(this.getRequest().getParameter("preco")));
             produto.setTamanho(this.getRequest().getParameter("tamanho").charAt(0));
             Part part = this.getRequest().getPart("imagem");
+            byte[] buffer;
+            try (InputStream inputStream = part.getInputStream()) {
+                buffer = new byte[inputStream.available()];
+                inputStream.read(buffer);
+            }
+            Imagem imagem = new Imagem();
+            imagem.setConteudo(buffer);
             
             try {
-                Boolean resp = new ProdutoDAO().insert(produto);
-                if (resp) {
+                Boolean respProd = new ProdutoDAO().insert(produto);
+                Boolean respImg = new ImagemDAO().insert(imagem);
+                if (respProd == true && respImg == true) {
                     back = "WEB-INF/jsp/produto/inserido.jsp";
                 } else {
                     back = "erro";

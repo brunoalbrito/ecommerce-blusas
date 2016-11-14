@@ -109,7 +109,7 @@ public class UsuarioDAO implements GenericDAO<Usuario> {
         Usuario usuario = new Usuario();
         EnderecoDAO daoEndereco = new EnderecoDAO();
         
-        String sql = "SELECT * FROM usuario WHERE username=?";
+        String sql = "SELECT * FROM usuario WHERE usuario=?";
         try{
         PreparedStatement pst = connection.prepareStatement(sql);
         pst.setString(1, username);

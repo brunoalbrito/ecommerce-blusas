@@ -11,6 +11,8 @@ import com.br.lp2.model.javabeans.Endereco;
 import com.br.lp2.model.javabeans.Tipo;
 import com.br.lp2.model.javabeans.Usuario;
 import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.Cookie;
 
 /**
@@ -42,16 +44,22 @@ public class UsuarioAction extends ActionSupport {
             endereco.setId_endereco(new EnderecoDAO().insertWithPKReturn(endereco));
             
             usuario.setEndereco(endereco);
-            new UsuarioDAO().insert(usuario);
+            boolean result = new UsuarioDAO().insert(usuario);
+            if(result){
+                back = "WEB-INF/jsp/homeUser.jsp";
+            }else{
+                back = "erro.jsp";
+            }
         } catch (Exception e) {
-
+            Logger.getLogger(UsuarioAction.class.getName()).log(Level.SEVERE, null, e);
         }
         return back;
     }
     
-    public void doLogin(){
-        String username = getRequest().getParameter("username");
-        String password = getRequest().getParameter("password");
+    public String doLogin(){
+        String retorno=null;
+        String username = getRequest().getParameter("usuario");
+        String password = getRequest().getParameter("senha");
         
         Usuario usuario = new UsuarioDAO().findByUsername(username);
         
@@ -68,10 +76,16 @@ public class UsuarioAction extends ActionSupport {
             }
             getResponse().addCookie(c1);
             getRequest().getSession().setAttribute("usuario", usuario);
+            if(usuario.getTipo().getIntTipo()==0){
+                retorno = "WEB-INF/jsp/homeAdmin.jsp";
+            }else{
+                retorno="WEB-INF/jsp/homeUser.jsp";
+            }
             
         }else{
            getRequest().getSession().setAttribute("error", "Wrong Password!"); 
         }
+        return retorno;
         
     }
 

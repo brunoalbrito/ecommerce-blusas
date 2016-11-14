@@ -39,9 +39,10 @@ public class ProdutoAction extends ActionSupport {
             imagem.setConteudo(buffer);
             
             try {
-                Boolean respProd = new ProdutoDAO().insert(produto);
+                long respProd = new ProdutoDAO().insertReturnID(produto);
+                imagem.setId_produto(respProd);
                 Boolean respImg = new ImagemDAO().insert(imagem);
-                if (respProd == true && respImg == true) {
+                if (respProd != 0 && respImg == true) {
                     back = "WEB-INF/jsp/produto/inserido.jsp";
                 } else {
                     back = "erro";

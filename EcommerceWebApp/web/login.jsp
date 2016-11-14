@@ -26,7 +26,7 @@
             <p><input type="text" name="usuario"></p>
             <p>Senha: </p>
             <p><input type="password" name="senha"></p>
-            <a href="WEB-INF\jsp\usuario\cadastrarusuario.jsp">Cadastrar-se</a>
+            <a href="${pageContext.request.contextPath}/usuario/cadastrarusuario.jsp">Cadastrar-se</a>
           
             
             <input type="submit" value="Confirmar">

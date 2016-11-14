@@ -55,6 +55,5 @@
             
             <input type="submit" value="Confirmar">
         </form>
-        <a href="${pageContext.request.contextPath}/cargo!listar.action">cargos</a> |
     </body>
 </html>

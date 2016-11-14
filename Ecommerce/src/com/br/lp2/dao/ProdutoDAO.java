@@ -21,6 +21,7 @@ import java.util.logging.Logger;
  * @author Bruno
  */
 public class ProdutoDAO implements GenericDAO<Produto> {
+
     //RETIRAR ESSA VARIÁVEL, ABRIR E FECHAR CONEXÃO DENTRO DE TODOS OS MÉTODOS
     Connection connection = null;
 
@@ -149,6 +150,32 @@ public class ProdutoDAO implements GenericDAO<Produto> {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
+    }
+
+    public long insertReturnID(Produto produto) {
+
+        String sql = "INSERT INTO produto(cor,tamanho,preco,descricao)VALUES(?,?,?,?)";
+        Connection connection = null;
+        long ret = 0;
+        try {
+            connection = SingletonConnection.getInstance().getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id_produto"});
+            ps.setString(1, produto.getCor());
+            ps.setString(2, String.valueOf(produto.getTamanho()));
+            ps.setDouble(3, produto.getPreco());
+            ps.setString(4, produto.getDescricao());
+            System.out.println(produto);
+            ps.execute();
+            ResultSet rs = ps.getGeneratedKeys();
+            while (rs.next()) {
+                ret = rs.getLong(1);
+            }
+            ps.close();
+            connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return ret;
     }
 
 }

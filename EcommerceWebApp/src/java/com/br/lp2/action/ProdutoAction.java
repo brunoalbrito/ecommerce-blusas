@@ -115,7 +115,7 @@ public class ProdutoAction extends ActionSupport {
             Produto produto = new Produto();
             produto.setId_produto(Long.parseLong(this.getRequest().getParameter("id_produto")));
             new ProdutoDAO().remove(produto);
-            back = "index.jsp";
+            back = "WEB-INF/jsp/usuario/homeAdmin.jsp";
         } catch (Exception e) {
             Logger.getLogger(ProdutoAction.class.getName()).log(Level.SEVERE, null, e);
         }

@@ -5,7 +5,6 @@
  */
 package com.br.lp2.action;
 
-import com.br.lp2.dao.EnderecoDAO;
 import com.br.lp2.dao.ProdutoDAO;
 import com.br.lp2.dao.UsuarioDAO;
 import com.br.lp2.model.javabeans.Endereco;

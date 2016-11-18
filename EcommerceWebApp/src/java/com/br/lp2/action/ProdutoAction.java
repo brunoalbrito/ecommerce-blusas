@@ -65,7 +65,7 @@ public class ProdutoAction extends ActionSupport {
             if (!produtos.isEmpty()) {
                 back = "WEB-INF/jsp/produto/listar.jsp";
             } else {
-                back = "erro";
+                back = "error.jsp";
             }
             this.getRequest().setAttribute("produtos", produtos);
         } catch (Exception e) {

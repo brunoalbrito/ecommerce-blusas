@@ -34,7 +34,7 @@
                 <label for="pwd">Senha:</label>
                 <input type="password" class="form-control" id="pwd" name="senha" placeholder="password">
             </div>
-            <a class="btn btn-success" href="${pageContext.request.contextPath}/usuario/cadastrarusuario.jsp">Cadastrar-se</a>
+            <a class="btn btn-success" href="usuario!goToSignUp.action">Cadastrar-se</a>
 
 
             <input class="btn btn-danger" type="submit" value="Confirmar">

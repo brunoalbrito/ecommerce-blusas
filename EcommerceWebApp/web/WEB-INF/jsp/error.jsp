@@ -1,7 +1,7 @@
 <%-- 
-    Document   : homeUser
-    Created on : 14/11/2016, 12:59:13
-    Author     : Beatriz
+    Document   : error
+    Created on : 18/11/2016, 14:26:02
+    Author     : 31595472
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,6 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Deu ruim!</h1>
+        ${error}
     </body>
 </html>

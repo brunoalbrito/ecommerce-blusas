@@ -6,6 +6,7 @@
 package com.br.lp2.action;
 
 import com.br.lp2.dao.EnderecoDAO;
+import com.br.lp2.dao.ProdutoDAO;
 import com.br.lp2.dao.UsuarioDAO;
 import com.br.lp2.model.javabeans.Endereco;
 import com.br.lp2.model.javabeans.Tipo;
@@ -41,12 +42,18 @@ public class UsuarioAction extends ActionSupport {
             endereco.setCidade(getRequest().getParameter("cidade"));
             endereco.setEstado(getRequest().getParameter("estado"));
             endereco.setRua(getRequest().getParameter("rua"));
-            endereco.setId_endereco(new EnderecoDAO().insertWithPKReturn(endereco));
             
             usuario.setEndereco(endereco);
+            
+            System.out.println("Usuário criado: " + usuario);
+            
             boolean result = new UsuarioDAO().insert(usuario);
+            
+            System.out.println("Usuário persistido: " + usuario);
+            
             if(result){
-                back = "WEB-INF/jsp/homeUser.jsp";
+                getRequest().getSession().setAttribute("usuario", usuario);
+                back = (usuario.getTipo().getIntTipo() == 0?"WEB-INF/jsp/usuario/homeAdmin.jsp":"WEB-INF/jsp/usuario/homeUser.jsp");
             }else{
                 back = "erro.jsp";
             }
@@ -77,9 +84,10 @@ public class UsuarioAction extends ActionSupport {
             getResponse().addCookie(c1);
             getRequest().getSession().setAttribute("usuario", usuario);
             if(usuario.getTipo().getIntTipo()==0){
-                retorno = "WEB-INF/jsp/homeAdmin.jsp";
+                retorno = "WEB-INF/jsp/usuario/homeAdmin.jsp";
             }else{
-                retorno="WEB-INF/jsp/homeUser.jsp";
+                getRequest().getSession().setAttribute("produtos", new ProdutoDAO().findAll());
+                retorno="WEB-INF/jsp/usuario/homeUser.jsp";
             }
             
         }else{
@@ -87,6 +95,13 @@ public class UsuarioAction extends ActionSupport {
         }
         return retorno;
         
+    }
+    
+    public String goToSignUp(){
+        getRequest().setAttribute("tipoUsuarios", Tipo.values());
+//        getRequest().getRequestDispatcher("ususario/cadastrousuario.jsp");
+        System.out.println("Chegou!");
+        return "WEB-INF/jsp/usuario/cadastrarusuario.jsp";
     }
 
 }

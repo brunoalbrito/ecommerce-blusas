@@ -26,23 +26,23 @@
             <div class="container">
                 <div class="form-group">
                     <label for="color">Cor:</label>
-                    <input type="text" class="form-control" id="color">
+                    <input type="text" class="form-control" id="color" name="cor">
                 </div>
                 <div class="form-group">
                     <label for="tam">Tamanho:</label>
-                    <input type="text" class="form-control" id="tam">
+                    <input type="text" class="form-control" id="tam" name="tamanho">
                 </div>
                 <div class="form-group">
                     <label for="price">Preço:</label>
-                    <input type="text" class="form-control" id="price">
+                    <input type="text" class="form-control" id="price" name="preco">
                 </div>
                 <div class="form-group">
                     <label for="desc">Descrição:</label>
-                    <textarea class="form-control" rows="5" id="desc"></textarea>
+                    <textarea class="form-control" rows="5" id="desc" name="descricao"></textarea>
                 </div>
                 <div class="form-group">
                     <label for="img">Imagem:</label>
-                    <input type="file" id="imge">
+                    <input type="file" id="imge" name="imagem">
                 </div>
                 <button type="submit" class="btn btn-danger">Confirmar</button>         
         </form>

@@ -24,12 +24,12 @@ public class EstoqueDAO implements GenericDAO<Estoque> {
     public boolean insert(Estoque estoque) {
         boolean result = false;
 
-        String sql = "INSERT INTO estoque(id_produto,qtd)VALUES(?,?) ";
+        String sql = "INSERT INTO estoque(id_produto,qtd)VALUES((SELECT MAX(PRODUTO.ID_PRODUTO) "
+                + "FROM PRODUTO),?) ";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setLong(1, estoque.getProduto().getId_produto());
-            ps.setInt(2, estoque.getQtd());
+            ps.setInt(1, estoque.getQtd());
 
             int resp = ps.executeUpdate();
 

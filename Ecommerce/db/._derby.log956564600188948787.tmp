@@ -1,7 +1,7 @@
-Fri Nov 18 17:16:56 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+Mon Nov 14 14:10:57 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
 ----------------------------------------------------------------
-Fri Nov 18 17:16:56 BRST 2016:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0158-78de-c88d-fffffe38bdc4
+Mon Nov 14 14:10:58 BRST 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0158-639b-1435-fffffe38bdc4
 no diretório de banco de dados C:\Users\Bruno\Documents\Netbeans\Web\ecommerce-blusas\Ecommerce\db\ecommerce_blusas 
 
 java.vendor=Oracle Corporation
@@ -11,4 +11,5 @@ os.name=Windows 7
 os.arch=amd64
 os.version=6.1
 derby.system.home=C:\Users\Bruno\Documents\Netbeans\Web\ecommerce-blusas\Ecommerce\db
+ADVERTÊNCIA: O arquivo de log não foi encontrado, criando novo log. Possibilidade de inconsistência no banco de dados.
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''

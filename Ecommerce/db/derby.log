@@ -1,14 +1,31 @@
-Sat Nov 19 13:06:35 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
+Sat Nov 19 18:16:21 BRST 2016 : Apache Derby Servidor de Rede - 10.10.2.0 - (1582446) iniciado e pronto para aceitar conexões na porta 1527 em {3}
 ----------------------------------------------------------------
-Sat Nov 19 13:08:05 BRST 2016:
- Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0158-7d1f-f297-ffffe4c012f9
-no diretório de banco de dados C:\Users\Patricia\Documents\NetBeansProjects\ecommerce-blusas\Ecommerce\db\ecommerce_blusas 
+Sat Nov 19 18:16:21 BRST 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância a816c00e-0158-7e3b-8c51-fffffe38bdc4
+no diretório de banco de dados C:\Users\Bruno\Documents\Netbeans\Web\ecommerce-blusas\Ecommerce\db\ecommerce_blusas 
 
 java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_71-b15
-user.dir=C:\Users\Patricia\Documents\LEONARDO\glassfish-4.1\glassfish4\javadb
-os.name=Windows 10
+java.runtime.version=1.8.0_102-b14
+user.dir=C:\Program Files\glassfish-4.1.1\javadb
+os.name=Windows 7
 os.arch=amd64
-os.version=10.0
-derby.system.home=C:\Users\Patricia\Documents\NetBeansProjects\ecommerce-blusas\Ecommerce\db
+os.version=6.1
+derby.system.home=C:\Users\Bruno\Documents\Netbeans\Web\ecommerce-blusas\Ecommerce\db
+Carregador de classe do banco de dados iniciado - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Nov 19 18:16:30 BRST 2016:
+Encerrando a instância a816c00e-0158-7e3b-8c51-fffffe38bdc4
+Sat Nov 19 18:16:30 BRST 2016 Thread[DRDAConnThread_3,5,main] (DATABASE = ecommerce_blusas), (DRDAID = {2}), Banco de dados 'ecommerce_blusas' fechado.
+----------------------------------------------------------------
+Sat Nov 19 18:16:33 BRST 2016:
+ Inicializando o Derby versão The Apache Software Foundation - Apache Derby - 10.10.2.0 - (1582446): instância 560740aa-0158-7e3b-8c51-fffffe38bdc4
+no diretório de banco de dados C:\Users\Bruno\Documents\Netbeans\Web\ecommerce-blusas\Ecommerce\db\ecommerce_blusas 
+
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_102-b14
+user.dir=C:\Program Files\glassfish-4.1.1\javadb
+os.name=Windows 7
+os.arch=amd64
+os.version=6.1
+derby.system.home=C:\Users\Bruno\Documents\Netbeans\Web\ecommerce-blusas\Ecommerce\db
 Carregador de classe do banco de dados iniciado - derby.database.classpath=''

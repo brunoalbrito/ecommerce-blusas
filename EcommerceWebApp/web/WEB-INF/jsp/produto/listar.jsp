@@ -35,7 +35,7 @@
                                 <p>Cor: <c:out value="${i.cor}"></c:out></br>
                                     Tamanho:<c:out value="${i.tamanho}"></c:out><br>&nbsp;Preço:<c:out value="${i.preco}"></c:out></br>
                                     Descrição:<c:out value="${i.descricao}"></c:out><br>
-                                    <a class="btn btn-info btn-xs" href="${pageContext.request.contextPath}/produto!editar.action?id=${i.id_produto}">Editar</a>
+                                    <a class="btn btn-danger btn-group-lg" href="${pageContext.request.contextPath}/produto!editar.action?id=${i.id_produto}">Editar</a>
                                 </p>
                             </div>
                         </div>

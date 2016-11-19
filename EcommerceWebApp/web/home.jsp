@@ -110,11 +110,7 @@
         </div>
         <br>
         <footer class="container-fluid text-center">
-            <p>Blusão FCI Copyright</p>
-            <form class="form-inline">Get deals:
-                <input type="email" class="form-control" size="50" placeholder="Email Address">
-                <a class="btn btn-danger" href="usuario!goToSignUp.action">Sign Up</a>
-            </form>
+            <p>© TODOS OS DIREITOS RESERVADOS</p>
         </footer>
     </body>
 </html>

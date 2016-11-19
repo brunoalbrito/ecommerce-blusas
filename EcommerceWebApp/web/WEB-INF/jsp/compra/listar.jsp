@@ -17,7 +17,7 @@
         <title>Listar Compra</title>
     </head>
     <body>
-        <h1 style="text-align: center">Listar todas as compras</h1>
+        <h1 style="text-align: center">Listar Compras</h1>
         <div class="container">
             <div class="row">
                 <c:forEach var="i" items="${compras}"> 

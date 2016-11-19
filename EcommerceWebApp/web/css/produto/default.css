@@ -1,5 +1,6 @@
 body{
     width: 100%;
+    font-family: sans-serif
 }
 .text-center{
     text-align: center;
@@ -10,6 +11,5 @@ body{
 button{
     width: 50%;
     font-size: 60%;
-    font-family: cursive;
 }
 

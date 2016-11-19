@@ -17,7 +17,7 @@
     </head>
     <body>
         <div class="container">
-            <h2 class="text-center">Cadastrar Blusas</h2>
+            <h2 class="text-center">Cadastrar Blusão FCI</h2>
             <div class="col-md-6 col-sm-6 col-xs-12 text-middle">
                 <form action="${pageContext.request.contextPath}/produto!insert.action" method="POST" enctype="multipart/form-data">
                     <div class="form-group">

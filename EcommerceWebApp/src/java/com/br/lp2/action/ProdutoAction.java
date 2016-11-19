@@ -37,7 +37,7 @@ public class ProdutoAction extends ActionSupport {
             }
             Imagem imagem = new Imagem();
             imagem.setConteudo(buffer);
-            
+
             try {
                 long respProd = new ProdutoDAO().insertReturnID(produto);
                 imagem.setId_produto(respProd);
@@ -108,6 +108,7 @@ public class ProdutoAction extends ActionSupport {
         }
         return back;
     }
+
     public String remover() {
         String back = "erro";
         System.out.println("Passou aqui");
@@ -121,5 +122,20 @@ public class ProdutoAction extends ActionSupport {
         }
         return back;
     }
-    
+
+    public String showHome() {
+        String back = null;
+        try {
+            List<Produto> produtos = new ProdutoDAO().findAll();
+            if (!produtos.isEmpty()) {
+                back = "home.jsp";
+            } else {
+                back = "error.jsp";
+            }
+            this.getRequest().setAttribute("produtos", produtos);
+        } catch (Exception e) {
+            Logger.getLogger(ProdutoAction.class.getName()).log(Level.SEVERE, null, e);
+        }
+        return back;
+    }
 }

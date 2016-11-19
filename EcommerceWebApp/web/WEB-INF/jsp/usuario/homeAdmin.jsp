@@ -15,5 +15,6 @@
         <h1 style="text-align: center;color: rgb(160,00,00)">Site para venda de Blusas da FCI</h1>
         <p><a href="${pageContext.request.contextPath}/produto/cadastrarproduto.jsp">Cadastrar Produto</a></p>
         <p><a href="${pageContext.request.contextPath}/produto!listarTodos.action">Listar Produto</a>  
+        <p><a href="${pageContext.request.contextPath}/compra!listarTodos.action">Listar Compras</a>  
     </body>
 </html>

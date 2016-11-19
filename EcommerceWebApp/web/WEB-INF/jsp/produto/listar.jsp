@@ -27,9 +27,9 @@
         <div class="container">
             <h1 style="text-align: center">Listar Produtos</h1>
             <div class="row text-center slideanim">
-                <div class="col-md-4">
-                    <div class="thumbnail">
-                        <c:forEach var="i" items="${produtos}">        
+                <c:forEach var="i" items="${produtos}"> 
+                    <div class="col-md-6">
+                        <div class="thumbnail">
                             <img src="${pageContext.request.contextPath}/imagens/${i.id_produto}" style="width:100%">
                             <div class="caption">
                                 <p>Cor: <c:out value="${i.cor}"></c:out></br>
@@ -38,9 +38,9 @@
                                     <a class="btn btn-info btn-xs" href="${pageContext.request.contextPath}/produto!editar.action?id=${i.id_produto}">Editar</a>
                                 </p>
                             </div>
-                        </c:forEach>
+                        </div>
                     </div>
-                </div>
+                </c:forEach>
             </div>
         </div>
     </body>

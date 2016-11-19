@@ -39,10 +39,10 @@ public class UsuarioTESTE {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         u.setEndereco(e);
-        u.setNome("Bruno");
-        u.setSobrenome("Albuquerque");
+        u.setNome("Leonardo");
+        u.setSobrenome("Ferreira");
         u.setTipo(Tipo.ADM);
-        u.setUsuario("brunobrito");
+        u.setUsuario("leoferreira");
         u.setSenha("senha123");
         System.out.println("Tipo de usuario numericamente: " + u.getTipo().getIntTipo());
         new UsuarioDAO().insert(u);

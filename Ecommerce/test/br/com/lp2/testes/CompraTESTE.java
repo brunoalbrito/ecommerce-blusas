@@ -21,7 +21,7 @@ public class CompraTESTE {
      public static void main(String[] args) {
 
         Usuario u = new Usuario();;
-        u.setId_usuario(1);
+        u.setId_usuario(2);
 
         Compra compra = new Compra();
         compra.setUsuario(u);

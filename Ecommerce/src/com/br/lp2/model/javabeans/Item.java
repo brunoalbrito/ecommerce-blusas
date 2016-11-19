@@ -10,16 +10,18 @@ package com.br.lp2.model.javabeans;
  * @author Beatriz
  */
 public class Item {
+
     private long id_item;
     private int qtd;
     private Produto produto;
+    private Compra compra;
 
     public Item() {
     }
 
     @Override
     public String toString() {
-        return "Item{" + "id_item=" + id_item + ", qtd=" + qtd + ", produto=" + produto + '}';
+        return "Item{" + "qtd=" + qtd + ", produto=" + produto + ", compra=" + compra + '}';
     }
 
     public long getId_item() {
@@ -46,6 +48,12 @@ public class Item {
         this.produto = produto;
     }
 
-    
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
+    }
     
 }

@@ -25,12 +25,12 @@ public class CompraDAO implements GenericDAO<Compra> {
     @Override
     public boolean insert(Compra compra) {
         boolean result = false;
-        String sql = "INSERT INTO compra(id_usuario,entrege,total,data_compra,pagamento)VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO compra(id_usuario,entregue,total,data_compra,pagamento)VALUES(?,?,?,?,?)";
         PreparedStatement ps;
         try {
             ps = connection.prepareStatement(sql);
             ps.setLong(1, compra.getUsuario().getId_usuario());
-            ps.setBoolean(2, compra.getEntrege());
+            ps.setBoolean(2, compra.getEntregue());
             ps.setDouble(3, compra.getTotal());
             ps.setTimestamp(4, Timestamp.valueOf(compra.getDt_pedido()));
             ps.setBoolean(5, compra.getPagamento());
@@ -56,7 +56,7 @@ public class CompraDAO implements GenericDAO<Compra> {
                 Compra compra = new Compra();
                 compra.setUsuario(udAO.findById(rs.getLong("id_usuario")));
                 compra.setId_compra(rs.getLong("id_compra"));
-                compra.setEntregue(rs.getBoolean("entrege"));
+                compra.setEntregue(rs.getBoolean("entregue"));
                 compra.setTotal(rs.getDouble("total"));
                 compra.setDt_pedido(rs.getTimestamp("data_compra").toLocalDateTime());
                 compra.setPagamento(rs.getBoolean("pagamento"));
@@ -72,11 +72,11 @@ public class CompraDAO implements GenericDAO<Compra> {
                     Produto produto = new Produto();
                     produto.setCor(rs1.getString("cor"));
                     produto.setDescricao("descricao");
-                    produto.setTamanho(rs.getString("tamanho").charAt(0));
-                    produto.setPreco(rs.getDouble("preco"));
+                    produto.setTamanho(rs1.getString("tamanho").charAt(0));
+                    produto.setPreco(rs1.getDouble("preco"));
                     Item item = new Item();
                     item.setProduto(produto);
-                    item.setQtd(rs.getInt("qtd"));
+                    item.setQtd(rs1.getInt("qtd"));
                     items.add(item);
                 }
                 compra.setItens(items);
@@ -104,7 +104,7 @@ public class CompraDAO implements GenericDAO<Compra> {
             while (rs.next()) {
                 compra.setUsuario(udAO.findById(rs.getLong(sql)));
                 compra.setId_compra(rs.getLong("id_compra"));
-                compra.setEntregue(rs.getBoolean("entrege"));
+                compra.setEntregue(rs.getBoolean("entregue"));
                 compra.setTotal(rs.getDouble("total"));
                 compra.setDt_pedido(rs.getTimestamp("data_compra").toLocalDateTime());
                 compra.setPagamento(rs.getBoolean("pagamento"));
@@ -140,10 +140,10 @@ public class CompraDAO implements GenericDAO<Compra> {
     @Override
     public boolean modify(Compra compra) {
         boolean result = false;
-        String sql = "UPDATE compra set entrege = ?, total = ?,data_compra = ?, pagamento = ? WHERE id_compra  = ?";
+        String sql = "UPDATE compra set entregue = ?, total = ?,data_compra = ?, pagamento = ? WHERE id_compra  = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
-            ps.setBoolean(1, compra.getEntrege());
+            ps.setBoolean(1, compra.getEntregue());
             ps.setDouble(2, compra.getTotal());
             ps.setTimestamp(3, Timestamp.valueOf(compra.getDt_pedido()));
             ps.setBoolean(4, compra.getPagamento());

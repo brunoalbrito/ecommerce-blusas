@@ -11,6 +11,7 @@ import com.br.lp2.model.javabeans.Tipo;
 import com.br.lp2.model.javabeans.Usuario;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -30,7 +31,7 @@ public class UsuarioTESTE {
         Usuario u = new Usuario();
         u.setCpf("45790098512");
 
-        DateFormat df = DateFormat.getDateInstance();
+        DateFormat df = new SimpleDateFormat("MM/dd/yy");
 
         try {
             u.setDt_nascimento(df.parse("17/02/1997"));

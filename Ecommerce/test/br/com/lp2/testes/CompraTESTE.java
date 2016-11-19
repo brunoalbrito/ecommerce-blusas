@@ -20,23 +20,20 @@ import java.util.List;
 public class CompraTESTE {
      public static void main(String[] args) {
 
-//        Usuario u = new Usuario();;
-//        u.setId_usuario(3);
-//
-//        Compra compra = new Compra();
-//        compra.setUsuario(u);
-//        compra.setDt_pedido(LocalDateTime.now());
-//        compra.setTotal(200);
-//        compra.setEntregue(true);
-//        compra.setPagamento(true);
-//        
-//        List<Compra> c = new CompraDAO().findAll();
-//         for (Compra compra1 : c) {
-//             System.out.println(compra1);
-//         }
-         
-         Estoque estoque = new Estoque();
-         estoque.setQtd(10);
-         new EstoqueDAO().insert(estoque);
+        Usuario u = new Usuario();;
+        u.setId_usuario(1);
+
+        Compra compra = new Compra();
+        compra.setUsuario(u);
+        compra.setDt_pedido(LocalDateTime.now());
+        compra.setTotal(200);
+        compra.setEntregue(true);
+        compra.setPagamento(true);
+        new CompraDAO().insert(compra);
+        
+        List<Compra> c = new CompraDAO().findAll();
+         for (Compra compra1 : c) {
+             System.out.println(compra1);
+         }
     }
 }

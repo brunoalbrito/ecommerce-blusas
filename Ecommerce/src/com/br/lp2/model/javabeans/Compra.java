@@ -35,7 +35,7 @@ public class Compra implements Serializable {
         this.id_compra = id_compra;
     }
 
-    public boolean getEntrege() {
+    public boolean getEntregue() {
         return entregue;
     }
 

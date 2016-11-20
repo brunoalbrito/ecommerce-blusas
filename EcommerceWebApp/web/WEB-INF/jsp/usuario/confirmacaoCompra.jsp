@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <c:import url="../../../template/header.jsp"/>
-<h1>Deu bom!</h1>
-${sucesso}
-<c:import url="../../../template/footer.jsp"/>
 
+Compra confirmada!
+
+<c:import url="../../../template/footer.jsp"/>

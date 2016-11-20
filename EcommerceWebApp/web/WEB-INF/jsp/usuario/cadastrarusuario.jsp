@@ -1,27 +1,8 @@
-    <%-- 
-    Document   : cadastrarproduto
-    Created on : 07/11/2016, 09:05:37
-    Author     : 41583469
---%>
-
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page language="java" contentType="text/html;charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Cadastrar Produto</title>
-        <style>
-            input[type="text"]{
-                border-radius: 4px;
-                width: 50%;
-                height: 25px;
-                background:activecaption;
-            }
-        </style>
-    </head>
-    <body>
+
+<c:import url="../../../template/header.jsp"/>
+
         <form action="${pageContext.request.contextPath}/usuario!insert.action" method="GET">
             <p>Nome: </p>
             <p><input type="text" name="nome"></p>
@@ -70,5 +51,5 @@
             
             <input type="submit" value="Confirmar">
         </form>
-    </body>
-</html>
+            
+<c:import url="../../../template/footer.jsp"/>

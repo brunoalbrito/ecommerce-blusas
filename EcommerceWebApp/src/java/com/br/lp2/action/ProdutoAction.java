@@ -124,6 +124,7 @@ public class ProdutoAction extends ActionSupport {
     }
 
     public String showHome() {
+        System.out.println("Entrou no showHOme!");
         String back = null;
         try {
             List<Produto> produtos = new ProdutoDAO().findAll();

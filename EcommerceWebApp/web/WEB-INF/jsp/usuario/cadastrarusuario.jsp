@@ -5,8 +5,13 @@
 <h2 class="text-center">Cadastre-se</h2>
 <h3 class="text-center">Informações Pessoais</h3>
 <div class="container">
-    <div class="col-md-12 col-sm-12 col-xs-12">
-        <form action="${pageContext.request.contextPath}/usuario!insert.action" method="GET">
+    <style>
+        .text-middle{
+            margin-left: auto;margin-right: auto;float: none;
+        }
+    </style>
+    <div class="col-md-6 col-sm-12 col-xs-12 text-middle">
+        <form action="${pageContext.request.contextPath}/usuario!insert.action" method="POST">
             <p>Nome: </p>
             <p><input type="text" class="form-control" name="nome"></p>
 
@@ -44,11 +49,11 @@
 
             <p>CEP: </p>
             <p><input type="text" class="form-control" name="cep"></p>
-        </div>
-        <div class="form-group text-center">
-            <button type="submit" class="btn btn-danger">Confirmar</button>         
-        </div>
-    </form>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-danger">Confirmar</button>         
+            </div>
+    </div>
+</form>
 </div>
 </div>
 

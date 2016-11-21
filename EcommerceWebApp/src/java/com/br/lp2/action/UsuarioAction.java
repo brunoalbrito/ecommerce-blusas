@@ -62,9 +62,9 @@ public class UsuarioAction extends ActionSupport {
 
             if (result) {
                 getRequest().getSession().setAttribute("usuario", usuario);
-                back = (usuario.getTipo().getIntTipo() == 0 ? "WEB-INF/jsp/usuario/homeAdmin.jsp" : "WEB-INF/jsp/usuario/homeUser.jsp");
+                back = goToHome();
             } else {
-                back = "erro.jsp";
+                back = "../error.jsp";
             }
         } catch (Exception e) {
             Logger.getLogger(UsuarioAction.class.getName()).log(Level.SEVERE, null, e);
@@ -78,10 +78,10 @@ public class UsuarioAction extends ActionSupport {
         String password = getRequest().getParameter("senha");
 
         Usuario usuario = new UsuarioDAO().findByUsername(username);
-
-        if (usuario == null) {
-            getRequest().getSession().setAttribute("error", "User not found");
-            retorno = "WEB-INF/jsp/error.jsp";
+        System.out.println("Usuário: " + usuario);
+        if (usuario.getId_usuario() == 0) {
+            getRequest().getSession().setAttribute("erro", "Usuário não econtrado.");
+            return "WEB-INF/jsp/error.jsp";
         }else if (password.equals(usuario.getSenha())) {
             String remember = getRequest().getParameter("remember");
 
@@ -99,7 +99,7 @@ public class UsuarioAction extends ActionSupport {
             retorno = goToHome();
 
         } else {
-            getRequest().getSession().setAttribute("error", "Wrong Password!");
+            getRequest().getSession().setAttribute("erro", "Senha incorreta!");
             retorno = "WEB-INF/jsp/error.jsp";
         }
         return retorno;
@@ -144,8 +144,10 @@ public class UsuarioAction extends ActionSupport {
             session.setAttribute("compras", daoCompra.findAll());
             retorno = "WEB-INF/jsp/compra/comprasAdmin.jsp";
         } else {
-            session.setAttribute("compras", daoCompra.findByUser(usuario));
-            retorno = "WEB-INF/jsp/usuario/comprasUsuario.jsp";
+            List<Compra> compras = daoCompra.findByUser(usuario);
+            System.out.println("Lista de compras: " + compras.size());
+            session.setAttribute("compras", compras);
+            retorno = "WEB-INF/jsp/compra/comprasUsuario.jsp";
         }
         return retorno;
     }
@@ -193,7 +195,7 @@ public class UsuarioAction extends ActionSupport {
                 }
             }
             if (temErro) {
-                getRequest().setAttribute("error", erro.toString());
+                getRequest().setAttribute("erro", erro.toString());
                 retorno = "WEB-INF/jsp/error.jsp";
             } else {
                 
@@ -211,7 +213,7 @@ public class UsuarioAction extends ActionSupport {
                 retorno = "WEB-INF/jsp/usuario/confirmacaoCompra.jsp";
             }
         } else {
-            getRequest().setAttribute("error", "Selecione pelo menos um produto para fazer uma compra");
+            getRequest().setAttribute("erro", "Selecione pelo menos um produto para fazer uma compra");
             retorno = "WEB-INF/jsp/error.jsp";
         }
         return retorno;

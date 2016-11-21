@@ -81,7 +81,8 @@ public class UsuarioAction extends ActionSupport {
 
         if (usuario == null) {
             getRequest().getSession().setAttribute("error", "User not found");
-        } else if (password.equals(usuario.getSenha())) {
+            retorno = "WEB-INF/jsp/error.jsp";
+        }else if (password.equals(usuario.getSenha())) {
             String remember = getRequest().getParameter("remember");
 
             Cookie c1 = new Cookie("username", username);
@@ -99,6 +100,7 @@ public class UsuarioAction extends ActionSupport {
 
         } else {
             getRequest().getSession().setAttribute("error", "Wrong Password!");
+            retorno = "WEB-INF/jsp/error.jsp";
         }
         return retorno;
 
@@ -140,7 +142,7 @@ public class UsuarioAction extends ActionSupport {
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         if (usuario.getTipo().getIntTipo() == 0) {
             session.setAttribute("compras", daoCompra.findAll());
-            retorno = "WEB-INF/jsp/compra/listar.jsp";
+            retorno = "WEB-INF/jsp/compra/comprasAdmin.jsp";
         } else {
             session.setAttribute("compras", daoCompra.findByUser(usuario));
             retorno = "WEB-INF/jsp/usuario/comprasUsuario.jsp";

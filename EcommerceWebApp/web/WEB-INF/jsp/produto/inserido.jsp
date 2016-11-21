@@ -1,26 +1,12 @@
-<%-- 
-    Document   : insertido
-    Created on : 07/11/2016, 13:40:03
-    Author     : 41583469
---%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <!--Necessario colocar o pageContext pra funcionar -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/estoque/default.css " />
-        <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
-        <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
-    </head>
-    <body>
+
+<c:import url="../../../template/header.jsp"/>
         <h2 class="text-center">Registrar no Estoque</h2>
 
         <div class="container">
-            <div class="col-md-5 col-sm-5 col-xs-5 text-middle">
+            <div class="col-md-12 col-sm-12 col-xs-12">
                 <form action="${pageContext.request.contextPath}/estoque!insert.action" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="color">Cor:</label>
@@ -48,5 +34,4 @@
                 </form>   
             </div>
         </div>
-    </body>
-</html>
+<c:import url="../../../template/footer.jsp"/>

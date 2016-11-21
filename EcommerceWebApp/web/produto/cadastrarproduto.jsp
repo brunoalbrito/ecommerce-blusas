@@ -1,24 +1,9 @@
-<%--    Document   : cadastrarproduto
-    Created on : 07/11/2016, 09:05:37
-    Author     : 41583469
---%>
-
-
-<%@page language="java" contentType="text/html;charset=ISO-8859-1"  pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css" />
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/produto/default.css " />
-        <script src="${pageContext.request.contextPath}/js/jquery.js"></script>
-        <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
-        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-        <title>Cadastrar Produto</title>
-    </head>
-    <body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<c:import url="../template/header.jsp"/>
         <div class="container">
-            <h2 class="text-center">Cadastrar Blusão FCI</h2>
-            <div class="col-md-6 col-sm-6 col-xs-12 text-middle">
+            <h2 class="text-center">Cadastrar BlusÃ£o FCI</h2>
+            <div class="col-md-12 col-sm-12 col-xs-12 text-middle">
                 <form action="${pageContext.request.contextPath}/produto!insert.action" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="color">Cor:</label>
@@ -29,11 +14,11 @@
                         <input type="text" class="form-control" id="tam" name="tamanho">
                     </div>
                     <div class="form-group">
-                        <label for="price">Preço:</label>
+                        <label for="price">PreÃ§o:</label>
                         <input type="text" class="form-control" id="price" name="preco">
                     </div>
                     <div class="form-group">
-                        <label for="desc">Descrição:</label>
+                        <label for="desc">DescriÃ§Ã£o:</label>
                         <textarea class="form-control" rows="5" id="desc" name="descricao"></textarea>
                     </div>
                     <div class="form-group">
@@ -46,5 +31,4 @@
                 </form>
             </div>
         </div>
-    </body>
-</html>
+<c:import url="../template/footer.jsp"/>

@@ -25,13 +25,6 @@
             <p>Senha: </p>
 
             <p><input type="password" class="form-control" name="senha"></p>
-            <p>Tipo de Usuário: </p>
-
-            <select name="tipo" class="form-control">
-                <c:forEach var="tipo" items="${tipoUsuarios}" varStatus="cont">
-                    <option value="${cont.index}">${tipo.toString()}</option>                    
-                </c:forEach>
-            </select>
 
             <hr>
 

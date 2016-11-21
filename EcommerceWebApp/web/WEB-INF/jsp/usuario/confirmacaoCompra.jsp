@@ -3,6 +3,8 @@
 
 <c:import url="../../../template/header.jsp"/>
 
-Compra confirmada!
+Compra efetuada com sucesso!
+<br>
+${compra}
 
 <c:import url="../../../template/footer.jsp"/>

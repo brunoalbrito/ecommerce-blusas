@@ -42,7 +42,7 @@ public class UsuarioAction extends ActionSupport {
             usuario.setCpf(getRequest().getParameter("cpf"));
             usuario.setUsuario(getRequest().getParameter("usuario"));
             usuario.setSenha(getRequest().getParameter("senha"));
-            usuario.setTipo(Tipo.values()[Integer.parseInt(getRequest().getParameter("tipo"))]);
+            usuario.setTipo(Tipo.values()[1]);
             usuario.setDt_nascimento(new SimpleDateFormat("yyyy-MM-dd").parse(getRequest().getParameter("dt_nascimento")));
 
             Endereco endereco = new Endereco();
@@ -206,7 +206,8 @@ public class UsuarioAction extends ActionSupport {
                     e.setQtd(e.getQtd() - i.getQtd());
                     daoEstoque.modify(e);
                 }
-                
+                System.out.println(compra);
+                getRequest().setAttribute("compra", compra);
                 retorno = "WEB-INF/jsp/usuario/confirmacaoCompra.jsp";
             }
         } else {

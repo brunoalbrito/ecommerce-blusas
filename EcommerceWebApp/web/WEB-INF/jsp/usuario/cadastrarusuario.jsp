@@ -19,7 +19,7 @@
             <p>CPF: </p>
             <p><input type="text" class="form-control" name="cpf"></p>
 
-            <p>Usuario: </p>
+            <p>Usuario:</p>
 
             <p><input type="text" class="form-control" name="usuario"></p>
             <p>Senha: </p>

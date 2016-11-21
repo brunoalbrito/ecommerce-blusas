@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class EstoqueDAO implements GenericDAO<Estoque> {
 
-    private final static Connection connection = SingletonConnection.getInstance().getConnection();
+    private Connection connection;
 
     @Override
     public boolean insert(Estoque estoque) {
@@ -28,6 +28,7 @@ public class EstoqueDAO implements GenericDAO<Estoque> {
                 + "FROM PRODUTO),?) ";
 
         try {
+            connection = SingletonConnection.getInstance().getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setInt(1, estoque.getQtd());
 
@@ -46,7 +47,8 @@ public class EstoqueDAO implements GenericDAO<Estoque> {
     public List<Estoque> findAll() {
         List<Estoque> estoques = new ArrayList<>();
         String sql = "SELECT * FROM estoque INNER JOIN produto ON estoque.id_produto = produto.id_produto";
-        try {
+        try {            
+            connection = SingletonConnection.getInstance().getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -69,12 +71,34 @@ public class EstoqueDAO implements GenericDAO<Estoque> {
         }
         return estoques;
     }
+    
+    public Estoque findByProduto(Produto produto) {
+        Estoque estoque = new Estoque();
+        String sql = "SELECT * FROM estoque WHERE estoque.id_produto = ?";
+        try {
+            connection = SingletonConnection.getInstance().getConnection();
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setLong(1, produto.getId_produto());
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                estoque.setId_estoque(rs.getLong("id_estoque"));
+                estoque.setProduto(produto);
+                estoque.setQtd(rs.getInt("qtd"));
+            }
+            ps.close();
+            connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(EstoqueDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return estoque;
+    }
 
     @Override
     public Estoque findById(long id) {
         String sql = "SELECT * FROM estoque INNER JOIN produto ON estoque.id_produto = produto.id_produto AND id_estoque = ?";
         Estoque estoque = new Estoque();
         try {
+            connection = SingletonConnection.getInstance().getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setLong(1, id);
             ResultSet rs = ps.executeQuery();
@@ -102,6 +126,7 @@ public class EstoqueDAO implements GenericDAO<Estoque> {
         boolean result = false;
         String sql = "UPDATE estoque SET id_produto = ?, qtd = ? WHERE id_estoque = ?";
         try {
+            connection = SingletonConnection.getInstance().getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setLong(1, estoque.getProduto().getId_produto());
             ps.setInt(2, estoque.getQtd());
@@ -121,6 +146,7 @@ public class EstoqueDAO implements GenericDAO<Estoque> {
         boolean result = false;
         String sql = "DELETE FROM estoque WHERE id_estoque = ?";
         try {
+            connection = SingletonConnection.getInstance().getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.setLong(1, estoque.getId_estoque());
 

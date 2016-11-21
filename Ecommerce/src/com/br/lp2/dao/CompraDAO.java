@@ -3,6 +3,7 @@ package com.br.lp2.dao;
 import com.br.lp2.model.javabeans.Compra;
 import com.br.lp2.model.javabeans.Item;
 import com.br.lp2.model.javabeans.Produto;
+import com.br.lp2.model.javabeans.Usuario;
 import com.br.lp2.singletonconnection.SingletonConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,13 +29,17 @@ public class CompraDAO implements GenericDAO<Compra> {
         String sql = "INSERT INTO compra(id_usuario,entregue,total,data_compra,pagamento)VALUES(?,?,?,?,?)";
         PreparedStatement ps;
         try {
-            ps = connection.prepareStatement(sql);
+            ps = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
             ps.setLong(1, compra.getUsuario().getId_usuario());
             ps.setBoolean(2, compra.getEntregue());
             ps.setDouble(3, compra.getTotal());
             ps.setTimestamp(4, Timestamp.valueOf(compra.getDt_pedido()));
             ps.setBoolean(5, compra.getPagamento());
-            int resp = ps.executeUpdate();
+            ps.execute();
+            ResultSet keys = ps.getGeneratedKeys();
+            keys.next();
+            int resp = keys.getInt(1);
+            compra.setId_compra(resp);
             result = (resp != 0);
         } catch (SQLException ex) {
             Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -67,6 +72,55 @@ public class CompraDAO implements GenericDAO<Compra> {
                         + "inner join produto ON (produto.id_produto = item.id_produto) AND item.id_compra = ?";
                 PreparedStatement ps1 = connection.prepareStatement(sql1);
                 ps1.setLong(1, compra.getId_compra());
+                ResultSet rs1 = ps1.executeQuery();
+                while (rs1.next()) {
+                    Produto produto = new Produto();
+                    produto.setCor(rs1.getString("cor"));
+                    produto.setDescricao("descricao");
+                    produto.setTamanho(rs1.getString("tamanho").charAt(0));
+                    produto.setPreco(rs1.getDouble("preco"));
+                    Item item = new Item();
+                    item.setProduto(produto);
+                    item.setQtd(rs1.getInt("qtd"));
+                    items.add(item);
+                }
+                compra.setItens(items);
+                compras.add(compra);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(CompraDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return compras;
+    }
+    
+    public List<Compra> findByUser(Usuario usuario){
+        List<Compra> compras = new ArrayList<>();
+        List<Item> items = new ArrayList<>();
+        UsuarioDAO udAO = new UsuarioDAO();
+        String sql = "SELECT * FROM compra";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                Compra compra = new Compra();
+                compra.setUsuario(udAO.findById(rs.getLong("id_usuario")));
+                compra.setId_compra(rs.getLong("id_compra"));
+                compra.setEntregue(rs.getBoolean("entregue"));
+                compra.setTotal(rs.getDouble("total"));
+                compra.setDt_pedido(rs.getTimestamp("data_compra").toLocalDateTime());
+                compra.setPagamento(rs.getBoolean("pagamento"));
+                
+                String sql1 = "SELECT item.qtd,produto.id_produto,"
+                        + "produto.cor,produto.tamanho,produto.preco,produto.descricao FROM item "
+                        + "inner join compra ON (item.id_compra = compra.id_compra) "
+                        + "inner join produto ON (produto.id_produto = item.id_produto) AND item.id_compra = ? "
+                        + "where produto.id_usuario = ?";
+                PreparedStatement ps1 = connection.prepareStatement(sql1);
+                ps1.setLong(1, compra.getId_compra());
+                ps1.setLong(2, usuario.getId_usuario());
                 ResultSet rs1 = ps1.executeQuery();
                 while (rs1.next()) {
                     Produto produto = new Produto();

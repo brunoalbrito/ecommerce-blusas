@@ -8,7 +8,6 @@
 </style>
 <div class="container">
     <h2 class="text-center">Cadastrar Blusão FCI</h2>
-    <div class="col-md-6 col-sm-12 col-xs-12 text-middle">
         <form action="${pageContext.request.contextPath}/produto!insert.action" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="color">Cor:</label>

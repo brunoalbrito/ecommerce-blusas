@@ -10,9 +10,11 @@ import com.br.lp2.dao.ProdutoDAO;
 import com.br.lp2.model.javabeans.Imagem;
 import com.br.lp2.model.javabeans.Produto;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.jms.Session;
 import javax.servlet.http.Part;
 
 /**
@@ -139,4 +141,9 @@ public class ProdutoAction extends ActionSupport {
         }
         return back;
     }
+    public String detalhes(){
+        long id_produto = Long.parseLong(getRequest().getParameter("id_produto"));
+        this.getRequest().setAttribute("produto", new ProdutoDAO().findById(id_produto));
+        return "WEB-INF/jsp/produto/detalhes.jsp";
+    }    
 }

@@ -82,7 +82,7 @@ public class UsuarioAction extends ActionSupport {
         if (usuario.getId_usuario() == 0) {
             getRequest().getSession().setAttribute("erro", "Usuário não econtrado.");
             return "WEB-INF/jsp/error.jsp";
-        }else if (password.equals(usuario.getSenha())) {
+        } else if (password.equals(usuario.getSenha())) {
             String remember = getRequest().getParameter("remember");
 
             Cookie c1 = new Cookie("username", username);
@@ -162,9 +162,9 @@ public class UsuarioAction extends ActionSupport {
         double totalCompra = 0;
         boolean pagamento = false;
         boolean entregue = false;
-        
+
         Compra compra = new Compra();
-        compra.setUsuario((Usuario)getRequest().getSession().getAttribute("usuario"));
+        compra.setUsuario((Usuario) getRequest().getSession().getAttribute("usuario"));
         compra.setDt_pedido(LocalDateTime.now());
         compra.setPagamento(pagamento);
         compra.setEntregue(entregue);
@@ -178,7 +178,7 @@ public class UsuarioAction extends ActionSupport {
                 item.setProduto(produto);
                 item.setQtd(intQtd);
                 itens.add(item);
-                totalCompra += produto.getPreco()*intQtd;
+                totalCompra += produto.getPreco() * intQtd;
             }
         }
 
@@ -198,10 +198,10 @@ public class UsuarioAction extends ActionSupport {
                 getRequest().setAttribute("erro", erro.toString());
                 retorno = "WEB-INF/jsp/error.jsp";
             } else {
-                
+
                 daoCompra.insert(compra);
-                
-                for(Item i:compra.getItens()){
+
+                for (Item i : compra.getItens()) {
                     i.setCompra(compra);
                     daoItem.insert(i);
                     Estoque e = daoEstoque.findByProduto(i.getProduto());
@@ -217,6 +217,40 @@ public class UsuarioAction extends ActionSupport {
             retorno = "WEB-INF/jsp/error.jsp";
         }
         return retorno;
+    }
+
+    public String addCarrinho() {
+        if (getRequest().getSession().getAttribute("itens") == null) {
+            List<Item> items = new ArrayList<>();
+            Item item = new Item();
+            item.setProduto(new ProdutoDAO().findById(Long.parseLong(getRequest().getParameter("id_produto"))));
+            items.add(item);
+            getRequest().getSession().setAttribute("itens", items);
+        } else {
+            List<Item> items = (List<Item>) getRequest().getSession().getAttribute("itens");
+            Item item = new Item();
+            item.setProduto(new ProdutoDAO().findById(Long.parseLong(getRequest().getParameter("id_produto"))));
+            items.add(item);
+            getRequest().getSession().setAttribute("itens", items);
+        }
+        return "index.jsp";
+    }
+
+    public String exibirItemCarrinho() {
+        if (getRequest().getSession().getAttribute("itens") == null) {
+            List<Item> items = new ArrayList<>();
+            Item item = new Item();
+            item.setProduto(new ProdutoDAO().findById(Long.parseLong(getRequest().getParameter("id_produto"))));
+            items.add(item);
+            getRequest().getSession().setAttribute("itens", items);
+        } else {
+            List<Item> items = (List<Item>) getRequest().getSession().getAttribute("itens");
+            Item item = new Item();
+            item.setProduto(new ProdutoDAO().findById(Long.parseLong(getRequest().getParameter("id_produto"))));
+            items.add(item);
+            getRequest().getSession().setAttribute("itens", items);
+        }
+        return "WEB-INF/jsp/compra/exibirItens.jsp";
     }
 
 }

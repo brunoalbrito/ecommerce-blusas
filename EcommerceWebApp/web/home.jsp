@@ -14,4 +14,5 @@
         </form>
 </c:forEach>
 
+
 <c:import url="template/footer.jsp"/>

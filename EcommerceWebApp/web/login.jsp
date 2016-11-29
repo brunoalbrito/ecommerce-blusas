@@ -14,14 +14,12 @@
     </head>
 
     <body>
-        <div class="login">
-            <h1>Login</h1>
-            <form action="${pageContext.request.contextPath}/usuario!doLogin.action" method="POST">
-                <input type="text" name="usuario" placeholder="Username" required="required" />
-                <input type="password" name="senha" placeholder="Password" required="required" />
-                <button type="submit" class="">Confirmar</button>
-            </form>
-        </div>
+        <h1>Login</h1>
+        <form action="${pageContext.request.contextPath}/usuario!doLogin.action" method="POST">
+            <input type="text" name="usuario" placeholder="Username" required="required" />
+            <input type="password" name="senha" placeholder="Password" required="required" />
+            <button type="submit" class="">Confirmar</button>
+        </form>
     </body>
 </html>
 

@@ -5,31 +5,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <title>Blusão FCI</title>
-        <style>
-            /* Remove the navbar's default rounded borders and increase the bottom margin */
-            .navbar {
-
-                border-radius: 0;
-            }
-
-            /* Remove the jumbotron's default bottom margin */
-            .jumbotron {
-                margin-bottom: 0;
-                background-color: #d43f3a;
-                color: white; 
-            }
-
-            /* Add a gray background color and some padding to the footer */
-            footer {
-                color: white; 
-                background-color: #000;
-                padding: 25px;
-            }
-        </style>
+        <link href="${pageContext.request.contextPath}/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script src="${pageContext.request.contextPath}/jquery/jquery-3.1.1.min.js" type="text/javascript"></script>
+        <script src="${pageContext.request.contextPath}/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <title>Blusão FCI</title>     
     </head>
     <body>
 
@@ -58,7 +37,7 @@
                             <li><a href="${pageContext.request.contextPath}/produto/cadastrarproduto.jsp">Cadastrar Produto</a></li>
                             <li><a href="${pageContext.request.contextPath}/produto!listarTodos.action">Produto</a></li>
                             <li><a href="${pageContext.request.contextPath}/usuario!goToCompras.action">Compras</a></li>
-                        </c:if>
+                            </c:if>
 
                         <c:if test="${usuario != null && usuario.tipo.intTipo == 1}">
                             <li>
@@ -70,8 +49,8 @@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        
-                            <c:if test="${usuario == null}">
+
+                        <c:if test="${usuario == null}">
                             <li><a href="usuario!goToSignUp.action"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                             <li>
                                 <a href="login.jsp">

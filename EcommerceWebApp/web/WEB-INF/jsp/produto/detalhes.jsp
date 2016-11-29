@@ -10,11 +10,11 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Detalhes - ${produto.descricao} </title>
     </head>
     <body>
         <form method="POST" action="${pageContext.request.contextPath}/usuario!exibirItemCarrinho.action?id_produto=${produto.id_produto}">
-            <c:out value="${produto}"></c:out>
+            <%--<c:out value="${produto}"></c:out>--%>
             <img src="${pageContext.request.contextPath}/imagens/${produto.id_produto}" class="img-responsive" style="width:50%;height: 50%;" alt="Image">
             <input type="submit" value="Comprar">
         </form>

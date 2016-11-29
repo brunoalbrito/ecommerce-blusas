@@ -4,57 +4,47 @@
 <c:import url="../../../template/header.jsp"/>
 <h2 class="text-center">Cadastre-se</h2>
 <h3 class="text-center">Informações Pessoais</h3>
-<div class="container">
-    <style>
-        .text-middle{
-            margin-left: auto;margin-right: auto;float: none;
-        }
-    </style>
-    <div class="col-md-6 col-sm-12 col-xs-12 text-middle">
-        <form action="${pageContext.request.contextPath}/usuario!insert.action" method="POST">
-            <p>Nome: </p>
-            <p><input type="text" class="form-control" name="nome"></p>
+<div class="text-middle">
+    <form action="${pageContext.request.contextPath}/usuario!insert.action" method="POST">
+        <p>Nome: </p>
+        <p><input type="text" name="nome"></p>
 
-            <p>Sobrenome: </p>
-            <p><input type="text" class="form-control" name="sobrenome"></p>
+        <p>Sobrenome: </p>
+        <p><input type="text" name="sobrenome"></p>
 
-            <p>Data de Nascimento</p>
-            <p><input type="date" class="form-control" name="dt_nascimento"></p>
+        <p>Data de Nascimento</p>
+        <p><input type="date" name="dt_nascimento"></p>
 
-            <p>CPF: </p>
-            <p><input type="text" class="form-control" name="cpf"></p>
+        <p>CPF: </p>
+        <p><input type="text" name="cpf"></p>
 
-            <p>Usuario:</p>
+        <p>Usuario:</p>
 
-            <p><input type="text" class="form-control" name="usuario"></p>
-            <p>Senha: </p>
+        <p><input type="text" name="usuario"></p>
+        <p>Senha: </p>
 
-            <p><input type="password" class="form-control" name="senha"></p>
+        <p><input type="password" name="senha"></p>
 
-            <hr>
+        <hr>
 
-            <h3 class="text-center">Endereço</h3>
+        <h3>Endereço</h3>
 
-            <p>Rua: </p>
-            <p><input type="text" class="form-control" name="rua"></p>
+        <p>Rua: </p>
+        <p><input type="text" name="rua"></p>
 
-            <p>Bairro: </p>
-            <p><input type="text" class="form-control" name="bairro"></p>
+        <p>Bairro: </p>
+        <p><input type="text" name="bairro"></p>
 
-            <p>Cidade: </p>
-            <p><input type="text" class="form-control" name="cidade"></p>
+        <p>Cidade: </p>
+        <p><input type="text" name="cidade"></p>
 
-            <p>Estado: </p>
-            <p><input type="text" class="form-control" name="estado"></p>
+        <p>Estado: </p>
+        <p><input type="text" name="estado"></p>
 
-            <p>CEP: </p>
-            <p><input type="text" class="form-control" name="cep"></p>
-            <div class="form-group text-center">
-                <button type="submit" class="btn btn-danger">Confirmar</button>         
-            </div>
-    </div>
+        <p>CEP: </p>
+        <p><input type="text" name="cep"></p>
+
+        <button type="submit" class="btn btn-danger">Confirmar</button>         
 </form>
-</div>
-</div>
 
-<c:import url="../../../template/footer.jsp"/>
+<%--<c:import url="../../../template/footer.jsp"/>--%>

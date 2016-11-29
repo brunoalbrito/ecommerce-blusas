@@ -13,10 +13,13 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <c:forEach var="i" items="${sessionScope.itens}">
-            <c:out value="${i}">
-            </c:out>
-            </br>
-        </c:forEach>
+        <form method="POST" >
+            <c:forEach var="i" items="${sessionScope.itens}">
+                <c:out value="${i}">
+                </c:out>
+                </br>
+            </c:forEach>
+            <input type="submit" value="Finalizar Compra">
+        </form>
     </body>
 </html>

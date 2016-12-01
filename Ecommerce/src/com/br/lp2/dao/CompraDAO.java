@@ -99,10 +99,11 @@ public class CompraDAO implements GenericDAO<Compra> {
         List<Compra> compras = new ArrayList<>();
         List<Item> items = new ArrayList<>();
         UsuarioDAO udAO = new UsuarioDAO();
-        String sql = "SELECT * FROM compra";
+        String sql = "SELECT * FROM compra WHERE COMPRA.ID_USUARIO = ?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
+            ps.setLong(1, usuario.getId_usuario());
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Compra compra = new Compra();
@@ -116,11 +117,9 @@ public class CompraDAO implements GenericDAO<Compra> {
                 String sql1 = "SELECT item.qtd,produto.id_produto,"
                         + "produto.cor,produto.tamanho,produto.preco,produto.descricao FROM item "
                         + "inner join compra ON (item.id_compra = compra.id_compra) "
-                        + "inner join produto ON (produto.id_produto = item.id_produto) AND item.id_compra = ? "
-                        + "where produto.id_usuario = ?";
+                        + "inner join produto ON (produto.id_produto = item.id_produto) AND item.id_compra = ? ";
                 PreparedStatement ps1 = connection.prepareStatement(sql1);
                 ps1.setLong(1, compra.getId_compra());
-                ps1.setLong(2, usuario.getId_usuario());
                 ResultSet rs1 = ps1.executeQuery();
                 while (rs1.next()) {
                     Produto produto = new Produto();

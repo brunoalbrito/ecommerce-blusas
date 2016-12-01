@@ -15,6 +15,7 @@ public class Item {
     private int qtd;
     private Produto produto;
     private Compra compra;
+    private double valorTotal;
 
     public Item() {
     }
@@ -54,6 +55,19 @@ public class Item {
 
     public void setCompra(Compra compra) {
         this.compra = compra;
+    }
+    
+    private void calcValorTotal(){
+        this.valorTotal = produto.getPreco() * qtd;
+    }
+
+    public double getValorTotal() {
+        calcValorTotal();
+        return valorTotal;
+    }
+
+    public void setValorTotal(double valorTotal) {
+        this.valorTotal = valorTotal;
     }
     
 }

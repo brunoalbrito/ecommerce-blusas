@@ -34,7 +34,7 @@
                                </c:choose>">Home</a></li>
 
                         <c:if test="${usuario != null && usuario.tipo.intTipo == 0}">
-                            <li><a href="${pageContext.request.contextPath}/produto/cadastrarproduto.jsp">Cadastrar Produto</a></li>
+                            <li><a href="${pageContext.request.contextPath}/usuario!cadProduto.action">Cadastrar Produto</a></li>
                             <li><a href="${pageContext.request.contextPath}/produto!listarTodos.action">Produto</a></li>
                             <li><a href="${pageContext.request.contextPath}/usuario!goToCompras.action">Compras</a></li>
                             </c:if>
@@ -60,6 +60,12 @@
                             </li> 
                         </c:if>
                         <c:if test="${usuario != null}">
+                            <li>
+                                <a href="#">
+                                    <span class="glyphicon glyphicon-user"></span>
+                                    ${sessionScope.usuario.nome} ${sessionScope.usuario.sobrenome}
+                                </a>
+                            </li> 
                             <li>
                                 <a href="${pageContext.request.contextPath}/usuario!doLogout.action">
                                     <span class="glyphicon glyphicon-log-out"></span>

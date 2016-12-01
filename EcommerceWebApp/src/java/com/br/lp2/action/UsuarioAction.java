@@ -120,6 +120,13 @@ public class UsuarioAction extends ActionSupport {
         System.out.println("Chegou!");
         return "WEB-INF/jsp/usuario/cadastrarusuario.jsp";
     }
+    
+    public String cadProduto() {
+//        getRequest().setAttribute("tipoUsuarios", Tipo.values());
+////        getRequest().getRequestDispatcher("ususario/cadastrousuario.jsp");
+//        System.out.println("Chegou!");
+        return "WEB-INF/jsp/produto/cadastrarproduto.jsp";
+    }
 
     public String goToHome() {
         String retorno = null;
@@ -223,6 +230,7 @@ public class UsuarioAction extends ActionSupport {
         if (getRequest().getSession().getAttribute("itens") == null) {
             List<Item> items = new ArrayList<>();
             Item item = new Item();
+            item.setQtd(Integer.parseInt(getRequest().getParameter("qtd")));
             item.setProduto(new ProdutoDAO().findById(Long.parseLong(getRequest().getParameter("id_produto"))));
             items.add(item);
             getRequest().getSession().setAttribute("itens", items);
@@ -240,12 +248,14 @@ public class UsuarioAction extends ActionSupport {
         if (getRequest().getSession().getAttribute("itens") == null) {
             List<Item> items = new ArrayList<>();
             Item item = new Item();
+            item.setQtd(Integer.parseInt(getRequest().getParameter("qtd")));
             item.setProduto(new ProdutoDAO().findById(Long.parseLong(getRequest().getParameter("id_produto"))));
             items.add(item);
             getRequest().getSession().setAttribute("itens", items);
         } else {
             List<Item> items = (List<Item>) getRequest().getSession().getAttribute("itens");
             Item item = new Item();
+            item.setQtd(Integer.parseInt(getRequest().getParameter("qtd")));
             item.setProduto(new ProdutoDAO().findById(Long.parseLong(getRequest().getParameter("id_produto"))));
             items.add(item);
             getRequest().getSession().setAttribute("itens", items);

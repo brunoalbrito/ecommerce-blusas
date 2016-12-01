@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html;charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<c:import url="template/header.jsp"/>
+<c:import url="../../../template/header.jsp"/>
 <!--<a href="template/header.jsp"></a>-->
 <link href="${pageContext.request.contextPath}/css/produto/default.css" rel="stylesheet" type="text/css"/>
 <div class="container">
@@ -35,4 +35,4 @@
         </form>
     </div>
 </div>
-<%--<c:import url="../template/footer.jsp"/>--%>
+<%--<c:import url="../../../template/footer.jsp"/>--%>

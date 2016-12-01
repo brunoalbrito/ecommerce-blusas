@@ -16,10 +16,16 @@
         <form method="POST" action="${pageContext.request.contextPath}/usuario!exibirItemCarrinho.action?id_produto=${produto.id_produto}">
             <%--<c:out value="${produto}"></c:out>--%>
             <img src="${pageContext.request.contextPath}/imagens/${produto.id_produto}" class="img-responsive" style="width:50%;height: 50%;" alt="Image">
+            <input type="text" name="qtd" required="true" placeholder="Quantidade">
             <input type="submit" value="Comprar">
+            <button type="button" onclick="addCarrinho()">Adicionar ao carrinho</button>
         </form>
-        <form method="POST" action="${pageContext.request.contextPath}/usuario!addCarrinho.action?id_produto=${produto.id_produto}">
-            <input type="submit" value="Adicionar ao carrinho">
-        </form>
+        <script type="text/javascript">
+            function addCarrinho() {
+                var qtd = document.getElementsByName("qtd")[0].value;
+                var redirect = ("${pageContext.request.contextPath}/usuario!addCarrinho.action?id_produto=${produto.id_produto}&qtd="+qtd);
+                window.location = redirect;
+            }
+        </script>
     </body>
 </html>

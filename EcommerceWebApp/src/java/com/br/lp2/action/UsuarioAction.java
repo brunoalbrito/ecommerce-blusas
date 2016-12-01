@@ -120,7 +120,7 @@ public class UsuarioAction extends ActionSupport {
         System.out.println("Chegou!");
         return "WEB-INF/jsp/usuario/cadastrarusuario.jsp";
     }
-    
+
     public String cadProduto() {
 //        getRequest().setAttribute("tipoUsuarios", Tipo.values());
 ////        getRequest().getRequestDispatcher("ususario/cadastrousuario.jsp");
@@ -159,73 +159,73 @@ public class UsuarioAction extends ActionSupport {
         return retorno;
     }
 
-//    public String comprar() {
-//        String retorno = null;
-//        HttpSession session = getRequest().getSession();
-//        List<Item> itens = new ArrayList<Item>();
-//        EstoqueDAO daoEstoque = new EstoqueDAO();
-//        ItemDAO daoItem = new ItemDAO();
-//        CompraDAO daoCompra = new CompraDAO();
-//        double totalCompra = 0;
-//        boolean pagamento = false;
-//        boolean entregue = false;
-//
-//        Compra compra = new Compra();
-//        compra.setUsuario((Usuario) getRequest().getSession().getAttribute("usuario"));
-//        compra.setDt_pedido(LocalDateTime.now());
-//        compra.setPagamento(pagamento);
-//        compra.setEntregue(entregue);
-//
-//        List<Produto> produtos = (List<Produto>) session.getAttribute("produtos");
-//        for (Produto produto : produtos) {
-//            String qtd = getRequest().getParameter(produto.getId_produto() + "");
-//            int intQtd = Integer.parseInt(qtd);
-//            if (intQtd > 0) {
-//                Item item = new Item();
-//                item.setProduto(produto);
-//                item.setQtd(intQtd);
-//                itens.add(item);
-//                totalCompra += produto.getPreco() * intQtd;
-//            }
-//        }
-//
-//        if (!itens.isEmpty()) {
-//            boolean temErro = false;
-//            StringBuilder erro = new StringBuilder();
-//            compra.setTotal(totalCompra);
-//            compra.setItens(itens);
-//            for (Item i : itens) {
-//                Estoque e = daoEstoque.findByProduto(i.getProduto());
-//                if (e.getQtd() < i.getQtd()) {
-//                    temErro = true;
-//                    erro.append("Há somente " + e.getQtd() + " unidades do produto " + i.getProduto().getDescricao() + " em estoque!<br/>");
-//                }
-//            }
-//            if (temErro) {
-//                getRequest().setAttribute("erro", erro.toString());
-//                retorno = "WEB-INF/jsp/error.jsp";
-//            } else {
-//
-//                daoCompra.insert(compra);
-//
-//                for (Item i : compra.getItens()) {
-//                    i.setCompra(compra);
-//                    daoItem.insert(i);
-//                    Estoque e = daoEstoque.findByProduto(i.getProduto());
-//                    e.setQtd(e.getQtd() - i.getQtd());
-//                    daoEstoque.modify(e);
-//                }
-//                System.out.println(compra);
-//                getRequest().setAttribute("compra", compra);
-//                retorno = "WEB-INF/jsp/usuario/confirmacaoCompra.jsp";
-//            }
-//        } else {
-//            getRequest().setAttribute("erro", "Selecione pelo menos um produto para fazer uma compra");
-//            retorno = "WEB-INF/jsp/error.jsp";
-//        }
-//        return retorno;
-//    }
-//
+    public String comprar1() {
+        String retorno = null;
+        HttpSession session = getRequest().getSession();
+        List<Item> itens = new ArrayList<Item>();
+        EstoqueDAO daoEstoque = new EstoqueDAO();
+        ItemDAO daoItem = new ItemDAO();
+        CompraDAO daoCompra = new CompraDAO();
+        double totalCompra = 0;
+        boolean pagamento = false;
+        boolean entregue = false;
+
+        Compra compra = new Compra();
+        compra.setUsuario((Usuario) getRequest().getSession().getAttribute("usuario"));
+        compra.setDt_pedido(LocalDateTime.now());
+        compra.setPagamento(pagamento);
+        compra.setEntregue(entregue);
+
+        List<Produto> produtos = (List<Produto>) session.getAttribute("produtos");
+        for (Produto produto : produtos) {
+            String qtd = getRequest().getParameter(produto.getId_produto() + "");
+            int intQtd = Integer.parseInt(qtd);
+            if (intQtd > 0) {
+                Item item = new Item();
+                item.setProduto(produto);
+                item.setQtd(intQtd);
+                itens.add(item);
+                totalCompra += produto.getPreco() * intQtd;
+            }
+        }
+
+        if (!itens.isEmpty()) {
+            boolean temErro = false;
+            StringBuilder erro = new StringBuilder();
+            compra.setTotal(totalCompra);
+            compra.setItens(itens);
+            for (Item i : itens) {
+                Estoque e = daoEstoque.findByProduto(i.getProduto());
+                if (e.getQtd() < i.getQtd()) {
+                    temErro = true;
+                    erro.append("Há somente " + e.getQtd() + " unidades do produto " + i.getProduto().getDescricao() + " em estoque!<br/>");
+                }
+            }
+            if (temErro) {
+                getRequest().setAttribute("erro", erro.toString());
+                retorno = "WEB-INF/jsp/error.jsp";
+            } else {
+
+                daoCompra.insert(compra);
+
+                for (Item i : compra.getItens()) {
+                    i.setCompra(compra);
+                    daoItem.insert(i);
+                    Estoque e = daoEstoque.findByProduto(i.getProduto());
+                    e.setQtd(e.getQtd() - i.getQtd());
+                    daoEstoque.modify(e);
+                }
+                System.out.println(compra);
+                getRequest().setAttribute("compra", compra);
+                retorno = "WEB-INF/jsp/usuario/confirmacaoCompra.jsp";
+            }
+        } else {
+            getRequest().setAttribute("erro", "Selecione pelo menos um produto para fazer uma compra");
+            retorno = "WEB-INF/jsp/error.jsp";
+        }
+        return retorno;
+    }
+
     public String addCarrinho() {
         if (getRequest().getSession().getAttribute("itens") == null) {
             List<Item> items = new ArrayList<>();
@@ -263,19 +263,41 @@ public class UsuarioAction extends ActionSupport {
         return "WEB-INF/jsp/compra/exibirItens.jsp";
     }
 
-    public String registrarCompra() {
-        Compra compra = new Compra();
-        compra.setEntregue(false);
-        compra.setPagamento(false);
-        compra.setUsuario((Usuario) getRequest().getSession().getAttribute("usuario"));
-        compra.setDt_pedido(LocalDateTime.now());
-        double total = 0;
-        List<Item> items = (List<Item>) getRequest().getSession().getAttribute("itens");
-        for(Item item:items){
-            total += item.getValorTotal();
+    public String comprar() {
+        Usuario usuario = (Usuario) getRequest().getSession().getAttribute("usuario");
+        boolean logging = usuario != null;
+        String retorno = null;
+        if (logging) {
+            List<Item> itens = (List<Item>) getRequest().getSession().getAttribute("itens");
+            Compra compra = new Compra();
+            compra.setEntregue(false);
+            compra.setPagamento(false);
+            compra.setUsuario((Usuario) getRequest().getSession().getAttribute("usuario"));
+            compra.setDt_pedido(LocalDateTime.now());
+            compra.setItens(itens);
+            double total = 0;
+            if (!itens.isEmpty()) {
+                for (Item item : itens) {
+                    total += item.getValorTotal();
+                }
+                compra.setTotal(total);
+                boolean estoque;
+                StringBuilder erro = new StringBuilder();
+                for (Item i : itens) {
+                    Estoque e = new EstoqueDAO().findByProduto(i.getProduto());
+                    if (e.getQtd() < i.getQtd()) {
+                        estoque = true;
+                        erro.append("Há somente " + e.getQtd() + " unidades do produto " + i.getProduto().getDescricao() + " em estoque!<br/>");
+                    }
+                }
+                new CompraDAO().insert(compra);
+                for (Item i : itens) {
+                    new ItemDAO().insert(i);
+                }
+                retorno = "WEB-INF/jsp/usuario/confirmacaoCompra.jsp";
+            }
         }
-        
-        return null;
+        return retorno;
     }
 
 }

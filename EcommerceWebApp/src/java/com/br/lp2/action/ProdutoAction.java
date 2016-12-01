@@ -10,11 +10,9 @@ import com.br.lp2.dao.ProdutoDAO;
 import com.br.lp2.model.javabeans.Imagem;
 import com.br.lp2.model.javabeans.Produto;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.jms.Session;
 import javax.servlet.http.Part;
 
 /**

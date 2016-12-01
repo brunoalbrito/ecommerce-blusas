@@ -13,7 +13,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <form method="POST" >
+        <form method="POST" action="${pageContext.request.contextPath}/usuario!comprar.action">
             <c:forEach var="i" items="${sessionScope.itens}">
                 <c:out value="${i}">
                 </c:out>

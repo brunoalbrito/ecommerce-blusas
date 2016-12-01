@@ -3,7 +3,7 @@
 
 <c:import url="../../../template/header.jsp"/>
 
-<h1 style="text-align: center">Produtos</h1>
+<!--<h1 style="text-align: center">Produtos</h1>
 
 <c:if test="${produtos.isEmpty()}">
     Não há produtos disponíveis.
@@ -18,5 +18,5 @@
         </p>
     </c:forEach>
     <input type="submit" value="Comprar">
-</form>
+</form>-->
 <%--<c:import url="../../../template/footer.jsp"/>--%>

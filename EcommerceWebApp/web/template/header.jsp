@@ -59,7 +59,7 @@
                                 </a>
                             </li> 
                         </c:if>
-                        <c:if test="${usuario != null}">
+                        <c:if    test="${usuario != null}">
                             <li>
                                 <a href="#">
                                     <span class="glyphicon glyphicon-user"></span>

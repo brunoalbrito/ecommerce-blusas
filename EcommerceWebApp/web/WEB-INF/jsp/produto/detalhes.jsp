@@ -16,15 +16,20 @@
         <form method="POST" action="${pageContext.request.contextPath}/usuario!exibirItemCarrinho.action?id_produto=${produto.id_produto}">
             <%--<c:out value="${produto}"></c:out>--%>
             <img src="${pageContext.request.contextPath}/imagens/${produto.id_produto}" class="img-responsive" style="width:50%;height: 50%;" alt="Image">
-            <input type="text" name="qtd" required="true" placeholder="Quantidade">
+            <input type="text" name="qtd" required="true" placeholder="Quantidade" autofocus>
             <input type="submit" value="Comprar">
             <button type="button" onclick="addCarrinho()">Adicionar ao carrinho</button>
         </form>
         <script type="text/javascript">
             function addCarrinho() {
                 var qtd = document.getElementsByName("qtd")[0].value;
-                var redirect = ("${pageContext.request.contextPath}/usuario!addCarrinho.action?id_produto=${produto.id_produto}&qtd="+qtd);
-                window.location = redirect;
+                if (qtd.length !== 0) {
+                    var redirect = ("${pageContext.request.contextPath}/usuario!addCarrinho.action?id_produto=${produto.id_produto}&qtd=" + qtd);
+                    window.location = redirect;
+                }else{
+                    alert("Preencha o campo de quantidade");
+                    document.getElementsByName("qtd")[0].focus();
+                }
             }
         </script>
     </body>

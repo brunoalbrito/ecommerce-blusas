@@ -11,8 +11,7 @@
         <title>Blusão FCI</title>     
     </head>
     <body>
-
-        <nav class="navbar navbar-inverse">
+        <nav class="navbar navbar-inverse" style="border-radius: 0px;">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">

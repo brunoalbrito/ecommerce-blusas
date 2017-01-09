@@ -1,0 +1,10 @@
+body{
+    width: 100%;
+}
+
+#produtos{
+    border-style: solid;
+}
+#linha_cinza{
+    background-color:#9d9d9d; 
+}

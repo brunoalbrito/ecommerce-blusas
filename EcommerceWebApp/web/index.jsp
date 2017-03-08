@@ -14,6 +14,7 @@
         <title>JSP Page</title>
     </head>
     <body>
+    <!-- Esse é o corpo da página -->
     <c:set var="valor" scope="session" value="${false}"/>
     <c:if test="${valor == false}">
         <c:redirect url="/produto!showHome.action"/>
